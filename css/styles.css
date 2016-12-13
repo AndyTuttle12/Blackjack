@@ -1,0 +1,15 @@
+.the-table{
+	background-color: #277714;
+	border: 5px solid #663300;
+	border-radius: 10px;
+	margin-top: 50px;
+	padding:  30px 0;
+}
+
+.card{
+	height: 120px;
+	background-color: #fff;
+	color: #000;
+	margin: 10px;
+}
+
