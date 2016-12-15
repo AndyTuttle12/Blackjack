@@ -164,29 +164,33 @@ function placeCard(who, where, whatCard){
 function calculateTotal(hand, who){
 	var total = 0; //running total
 	var cardValue = 0; //temp value of card
-	var countAce = 0; //ace counter
+	var hasAce = false; //ace counter
 	for(let i = 0; i < hand.length; i++){
 		cardValue = Number(hand[i].slice(0,-1));
 		if(cardValue > 10){
 			cardValue = 10;
 		}
 		if(cardValue == 1){
-			countAce++;
+			hasAce = true;
 		}
 		if(cardValue === 1 && total <= 10){
 			cardValue = 11;
 		}
 		total += cardValue;
 
-		if((total > 21)&&(countAce > 0)){
+		if((total > 21)&&(hasAce)){
             total -= 10;
-            countAce--;
+            hasAce = false;
         }
 	}
 	var classSelector = '.' + who + '-total-number';
 	$(classSelector).text(total);
 	return total;
 }
+
+$('#myModal').on('show.bs.modal', function (e) {
+  if (!data) return e.preventDefault() // stops modal from being shown
+})
 
 // function arrangeDeck(){
 // 	// var deckArray = $('.deckOfCards').hasClass('.deck-card');

@@ -52,6 +52,6 @@
 
 }
 
-.flip{
+.flip, .matched{
 	transform: rotateY(-180deg);
 }
