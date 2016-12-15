@@ -5,7 +5,7 @@ body{
 .container{
 	margin: auto;
 	margin-top: 30px;
-	height: 700px;
+	height: 800px;
 	text-align: center;
 	background: rgb(32,87,109); /* Old browsers */
 	background: -moz-linear-gradient(top,  rgba(32,87,109,1) 13%, rgba(41,137,216,1) 38%, rgba(32,87,109,1) 75%, rgba(32,87,109,1) 100%); /* FF3.6-15 */
@@ -42,11 +42,11 @@ body{
 	position: fixed;
 	width: 1150px;
 	padding: 0px;
-	margin: -80px -20px -20px -20px;
+	margin: -130px -20px -20px -20px;
 	border-radius: 40px 40px 100% 100%;
 	border-width: 85px;
     border-style: solid;
-    transform: perspective(1200px) rotateX(45deg) translateX(10px);
+    transform: perspective(1000px) rotateX(45deg) translateX(10px);
 	perspective-origin: 25% 75%;
 	border-image: rgb(10,10,10) /* Old browsers */
 	-moz-border-image: -moz-radial-gradient(center, ellipse cover,  rgba(114,114,114,0.82) 55%, rgba(114,114,114,0.9) 70%, rgba(242,242,242,0.94) 77%, rgba(88,88,88,0.98) 86%, rgba(83,83,83,1) 90%, rgba(79,79,79,1) 93%, rgba(76,76,76,1) 95%, rgba(75,75,75,1) 96%, rgba(69,69,69,1) 100%); FF3.6-15
@@ -57,9 +57,11 @@ body{
 }
 
 button{
-	margin:20px 15px 10px 15px;
-	width: 130px;
+	margin:30px 0px 10px 0px;
+	height: 60px;
+	width: 180px;
 	cursor: pointer;
+	font-size: 20px;
 	font-weight: bold;
 	-webkit-box-shadow: 1px 1px 8px 2px rgba(68,68,68,0.9);
 	-moz-box-shadow: 1px 1px 8px 2px rgba(68,68,68,0.9);
@@ -74,13 +76,18 @@ button:active{
 	transform: translateY(4px);
 }
 
+.buttons-lower{
+	margin-top: -20px;
+}
+
 .card{
+	position: absolute;
 	height: 120px;
 	background-color: transparent;
 	color: #fff;
 	margin: 10px;
 	width: 87px;
-	border: 2px solid #ded40a;
+	border: 2px solid transparent;
 	border-radius: 5px;
 	overflow: hidden;
 
@@ -89,6 +96,68 @@ button:active{
 .card img{
 	height: 120px;
 	margin: -2px 0 0 -15.5px;
+}
+
+.player-cards .card-1{
+	left: 430px;
+	top: 400px;
+	border: 2px solid #ded40a;
+}
+
+.player-cards .card-2{
+	left: 450px;
+	top: 350px;
+}
+
+.player-cards .card-3{
+	left: 470px;
+	top: 300px;
+}
+
+.player-cards .card-4{
+	left: 490px;
+	top: 250px;
+}
+
+.player-cards .card-5{
+	left: 510px;
+	top: 200px;
+}
+
+.player-cards .card-6{
+	left: 530px;
+	top: 150px;
+}
+
+.dealer-cards .card-1{
+	left: 250px;
+	top: 0px;
+	border: 2px solid #ded40a;
+}
+
+.dealer-cards .card-2{
+	left: 270px;
+	top: 0px;
+}
+
+.dealer-cards .card-3{
+	left: 290px;
+	top: 0px;
+}
+
+.dealer-cards .card-4{
+	left: 310px;
+	top: 0px;
+}
+
+.dealer-cards .card-5{
+	left: 330px;
+	top: 0px;
+}
+
+.dealer-cards .card-6{
+	left: 350px;
+	top: 0px;
 }
 
 .dealer-total{
@@ -101,7 +170,7 @@ button:active{
 	height: 60px;
 	border: 3px solid rgba(191,110,78,1);
 	border-radius: 10px;
-	margin: 10px 20px 10px 35px;
+	margin: 30px 20px 10px 90px;
 	line-height: 60px;
 	font-size: 20px;
 	color: #b5a642;
@@ -121,7 +190,7 @@ button:active{
 	height: 60px;
 	border: 3px solid rgba(191,110,78,1);
 	border-radius: 10px;
-	margin: 10px 20px 10px 35px;
+	margin: 10px 20px 10px 90px;
 	line-height: 60px;
 	font-size: 20px;
 	color: #b5a642;
@@ -130,4 +199,26 @@ button:active{
 	box-shadow: 1px 1px 8px 2px rgba(68,68,68,0.9);
 	
 }
+
+.dealt{
+	animation: dealCard 20s infinite;
+}
+
+@keyframes dealCard{
+	0%{transform: rotate(-55deg)}
+	10%{transform: translate(-300px,400px)}
+	20%{}
+	30%{}
+	40%{}
+	50%{}
+	60%{}
+	70%{}
+	80%{}
+	90%{}
+	100%{}
+}
+
+
+
+/* Deck of Cards  */
 
