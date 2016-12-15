@@ -46,7 +46,7 @@ body{
 	border-radius: 40px 40px 100% 100%;
 	border-width: 85px;
     border-style: solid;
-    transform: perspective(1000px) rotateX(45deg) translateX(10px);
+    transform: perspective(800px) rotateX(45deg) translateX(10px);
 	perspective-origin: 25% 75%;
 	border-image: rgb(10,10,10) /* Old browsers */
 	-moz-border-image: -moz-radial-gradient(center, ellipse cover,  rgba(114,114,114,0.82) 55%, rgba(114,114,114,0.9) 70%, rgba(242,242,242,0.94) 77%, rgba(88,88,88,0.98) 86%, rgba(83,83,83,1) 90%, rgba(79,79,79,1) 93%, rgba(76,76,76,1) 95%, rgba(75,75,75,1) 96%, rgba(69,69,69,1) 100%); FF3.6-15
@@ -90,12 +90,15 @@ button:active{
 	border: 2px solid transparent;
 	border-radius: 5px;
 	overflow: hidden;
-
+	
 }
 
 .card img{
 	height: 120px;
 	margin: -2px 0 0 -15.5px;
+	-webkit-box-shadow: 6px 4px 3px -2px rgba(0,0,0,0.75);
+	-moz-box-shadow: 6px 4px 3px -2px rgba(0,0,0,0.75);
+	box-shadow: 6px 4px 3px -2px rgba(0,0,0,0.75);
 }
 
 .player-cards .card-1{
@@ -160,6 +163,14 @@ button:active{
 	top: 0px;
 }
 
+.player-cards .card-back{
+	
+}
+
+.dealer-cards .card-back{
+
+}
+
 .dealer-total{
 	background: rgb(240,183,161); /* Old browsers */
 	background: -moz-linear-gradient(45deg,  rgba(240,183,161,1) 0%, rgba(140,51,16,1) 26%, rgba(140,51,16,1) 35%, rgba(117,34,1,1) 49%, rgba(191,110,78,1) 100%); /* FF3.6-15 */
@@ -200,25 +211,61 @@ button:active{
 	
 }
 
-.dealt{
-	animation: dealCard 20s infinite;
+.dealt1{
+	animation: dealCard1 .8s;
+}
+.dealt2{
+	animation: dealCard2 .8s;
 }
 
-@keyframes dealCard{
-	0%{transform: rotate(-55deg)}
-	10%{transform: translate(-300px,400px)}
-	20%{}
-	30%{}
-	40%{}
-	50%{}
-	60%{}
-	70%{}
-	80%{}
-	90%{}
-	100%{}
+.dealerDealt1{
+	animation: dDealCard1 .8s;
+}
+.dealerDealt2{
+	animation: dDealCard2 .8s;
 }
 
+@keyframes dealCard1{
+	0%{transform: translate(350px,-400px) rotate(180deg)}
+	100%{transform: scale(1,1)}
+}
 
+@keyframes dealCard2{
+	0%{transform: translate(330px,-350px) rotate(180deg)}
+	100%{transform: scale(1,1)}
+}
+
+@keyframes dDealCard1{
+	0%{transform: translate(460px,0px) rotate(180deg)}
+	100%{transform: scale(1,1)}
+}
+
+@keyframes dDealCard2{
+	0%{transform: translate(460px,0px) rotate(180deg)}
+	100%{transform: scale(1,1)}
+}
 
 /* Deck of Cards  */
+
+#deckOfCards{
+	position: absolute;
+	left: 800px;
+	top: -30px;
+	height: 180px;
+	background-color: transparent;
+	color: #fff;
+	margin: 10px;
+	width: 180px;
+	border: 2px solid transparent;
+	border-radius: 5px;
+	overflow: hidden;
+}
+
+.deck-card{
+	/* margin: 10px; */
+	position: absolute;
+	left: 0;
+	top: 52px;
+	height: 120px;
+}
 

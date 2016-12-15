@@ -22,13 +22,23 @@ $(document).ready(function(){
 		playersHand.push(theDeck.shift());
 		dealersHand.push(theDeck.shift());
 		// console.log("freshDeck after shifts - ", freshDeck);
-
+		$('.player-cards .card-1').addClass('dealt1');
 		placeCard('player',1,playersHand[0]);
-		placeCard('player',2,playersHand[1]);
-
-
+		setTimeout(function(){
+			$('.player-cards .card-2').addClass('dealt2');
+			placeCard('player',2,playersHand[1]);
+		}, 800);
+		setTimeout(function(){
+		$('.dealer-cards .card-1').addClass('dealerDealt1');
 		placeCard('dealer',1,dealersHand[0]);
-		placeCard('dealer',2,dealersHand[1]);
+		}, 400);
+		setTimeout(function(){
+			$('.dealer-cards .card-2').addClass('dealerDealt2');
+			placeCard('dealer',2,dealersHand[1]);
+		}, 1200);
+
+
+		
 		hiddenDealerCard = dealersHand[1];
 		calculateTotal(playersHand, 'player');
 		calculateTotal(dealersHand, 'dealer');
@@ -60,6 +70,7 @@ $(document).ready(function(){
 			dealerTotal = calculateTotal(dealersHand, 'dealer');
 		}
 		$('.stand-button').attr('disabled', 'disabled');
+		$('.hit-button').attr('disabled', 'disabled');
 		$('.dealer-total-number').show();
 
 		checkWin();
@@ -167,7 +178,7 @@ function calculateTotal(hand, who){
 		}
 		total += cardValue;
 
-		while((total > 21)&&(countAce !== 0)){
+		if((total > 21)&&(countAce > 0)){
             total -= 10;
             countAce--;
         }
@@ -177,10 +188,17 @@ function calculateTotal(hand, who){
 	return total;
 }
 
-function arrangeDeck(){
-	var deckArray = [];
-	for(let i = 0; i < deckArray.length; i++){
-		deckArray[i]
-	}
-}
+// function arrangeDeck(){
+// 	// var deckArray = $('.deckOfCards').hasClass('.deck-card');
+// 	var cardLeft = 0;
+// 	var cardTop = 52;
+
+// 	for(let i = 1; i <= 52; i++){
+// 		$('.deck-card' + i).css({'left':cardLeft + 'px;','top':cardTop + 'px;'});
+// 		cardLeft+=.75;
+// 		cardTop-=1.25;
+// 		console.log("test");
+// 	}
+// }
+// arrangeDeck();
 
