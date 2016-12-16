@@ -4,23 +4,16 @@ var playersHand = [];
 var dealersHand = [];
 var topOfDeck = 4;
 var hiddenDealerCard;
+var handSize = 6;
+var setHTML = '';
 // ---------------------------
 
 $(document).ready(function(){
-	var handSize = 6;
-	var setHTML = '';
+	
 
-	for(let i = 1; i <= handSize; i++){
-		setHTML += '<div class="col-sm-2 card card-' + i + '">';
-			setHTML += '<div class="card-container">';
-				setHTML += '<div class="card-front"></div>';
-				setHTML += '<div class="card-back"></div>';
-			setHTML += '</div>';
-		setHTML += '</div>';
-	}
+	buildDivs();
 
-	$('.dealer-cards').html(setHTML);
-	$('.player-cards').html(setHTML);
+	
 
 
 	// console.log("freshDeck on page - "+freshDeck);
@@ -65,6 +58,10 @@ $(document).ready(function(){
 	});
 
 	$('.hit-button').click(function(){
+		$('.dealt1').removeClass('dealt1');
+		$('.dealt2').removeClass('dealt2');
+		$('.dDealt1').removeClass('dDealt1');
+		$('.dDealt2').removeClass('dDealt2');
 		if(calculateTotal(playersHand,'player') <= 21){
 			// add a card to js and document; update total
 			$('.double-button').attr('disabled', 'disabled');
@@ -129,18 +126,24 @@ function checkWin(){
 
 
 function reset(){
+	
 	// reset hands and deck...and the DOM
 	theDeck = createDeck();
 	playersHand = [];
 	dealersHand = [];
 	$('.card').html('');
+	
 	// console.log(freshDeck);
-
+	$('.dealt1').removeClass('dealt1');
+	$('.dealt2').removeClass('dealt2');
+	$('.dDealt1').removeClass('dDealt1');
+	$('.dDealt2').removeClass('dDealt2');
 
 	// console.log(theDeck);
 	playerTotal = calculateTotal(playersHand,'player');
 	dealerTotal = calculateTotal(dealersHand,'dealer');
 	$('.deal-button').removeAttr('disabled', 'disabled');
+	buildDivs();
 }
 
 function createDeck(){
@@ -204,6 +207,22 @@ function calculateTotal(hand, who){
 	$(classSelector).text(total);
 	return total;
 }
+
+
+function buildDivs(){
+	for(let i = 1; i <= handSize; i++){
+		setHTML += '<div class="col-sm-2 card card-' + i + '">';
+			setHTML += '<div class="card-container">';
+				setHTML += '<div class="card-front"></div>';
+				setHTML += '<div class="card-back"></div>';
+			setHTML += '</div>';
+		setHTML += '</div>';
+	}
+	$('.dealer-cards').html(setHTML);
+	$('.player-cards').html(setHTML);
+}
+
+
 
 $('#myModal').on('show.bs.modal', function (e) {
   if (!data) return e.preventDefault() // stops modal from being shown
