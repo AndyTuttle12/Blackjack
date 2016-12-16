@@ -7,6 +7,21 @@ var hiddenDealerCard;
 // ---------------------------
 
 $(document).ready(function(){
+	var handSize = 6;
+	var setHTML = '';
+
+	for(let i = 1; i <= handSize; i++){
+		setHTML += '<div class="col-sm-2 card card-' + i + '">';
+			setHTML += '<div class="card-container">';
+				setHTML += '<div class="card-front"></div>';
+				setHTML += '<div class="card-back"></div>';
+			setHTML += '</div>';
+		setHTML += '</div>';
+	}
+
+	$('.dealer-cards').html(setHTML);
+	$('.player-cards').html(setHTML);
+
 
 	// console.log("freshDeck on page - "+freshDeck);
 	$('.hit-button').attr('disabled', 'disabled');
@@ -151,14 +166,16 @@ function shuffleDeck(){
 }
 
 function placeCard(who, where, whatCard){
-	var classSelector = '.' + who + '-cards .card-' + where;
+	var classSelector = '.' + who + '-cards .card-' + where + ' .card-container .card-front';
+	var classSelector2 = '.' + who + '-cards .card-' + where + ' .card-container';
+	// example = .dealer-cards .card-1 .card-container .card-front
 	$(classSelector).html('<img src="images/' + whatCard + '.png">');
-	if(classSelector == '.dealer-cards .card-2'){
+	if(classSelector == '.dealer-cards .card-2 .card-container .card-front'){
 		$(classSelector).html('<img src="images/deck.png">');
-
 		$('.dealer-total-number').hide();
 		$('.deal-button').attr('disabled', 'disabled');
 	}
+	$(classSelector2).toggleClass('flip');
 }
 
 function calculateTotal(hand, who){
