@@ -50,6 +50,7 @@ $(document).ready(function(){
 		hiddenDealerCard = dealersHand[1];
 		calculateTotal(playersHand, 'player');
 		calculateTotal(dealersHand, 'dealer');
+		checkBlackJack();
 
 		$('.deal-button').attr('disabled', 'disabled');
 		$('.hit-button').removeAttr('disabled', 'disabled');
@@ -124,12 +125,31 @@ function checkWin(){
 		}else if(dealerTotal > playerTotal){
 			$("#dealerWins").modal("show");
 			// Dealer won.
+		}else if(playerTotal == 21 && playerTotal > dealerTotal){
+			$("#playerWins").modal("show");
+			//player won with BlackJack
 		}else{
 			$("#pushTie").modal("show");
 			// push...no winner...default to dealer win.
 		}
 	}
 	$('.reset-button').show();
+}
+
+function checkBlackJack(){
+	playerTotal = calculateTotal(playersHand,'player');
+	dealerTotal = calculateTotal(dealersHand,'dealer');
+	if(playerTotal == 21){
+		checkWin();
+
+		$('#playerBlackJack').modal("show");
+		$('.reset-button').show();
+		$('.deal-button').attr('disabled', 'disabled');
+		$('.hit-button').attr('disabled', 'disabled');
+		$('.stand-button').attr('disabled', 'disabled');
+		$('.double-button').attr('disabled', 'disabled');
+
+	}
 }
 
 
