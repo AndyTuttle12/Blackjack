@@ -15,74 +15,137 @@
 </head>
 <body>
 
-<div class="container">
-	<div class="row">
-		<!-- Dealer Total -->
-		<div class="col-sm-2 dealer-total">
-			Dealer Total <span class="dealer-total-number">0</span>	
+	<div class="container">
+		<div class="row">
+			<!-- Dealer Total -->
+			<div class="col-sm-2 dealer-total">
+				Dealer Total <span class="dealer-total-number">0</span>	
+			</div>
+			<div class="col-sm-8 btn-group btn-group-lg" role="group">		
+				<button class="btn btn-lg btn-secondary deal-button">Deal</button>		
+				<button class="btn btn-lg btn-secondary hit-button">Hit</button>		
+				<button class="btn btn-lg btn-secondary stand-button">Stand</button>		
+				<button class="btn btn-lg btn-secondary double-button">Double</button>
+			</div>
 		</div>
-		<div class="col-sm-8 btn-group btn-group-lg" role="group">		
-			<button class="btn btn-lg btn-secondary deal-button">Deal</button>		
-			<button class="btn btn-lg btn-secondary hit-button">Hit</button>		
-			<button class="btn btn-lg btn-secondary stand-button">Stand</button>		
-			<button class="btn btn-lg btn-secondary double-button">Double</button>
+		<div class="row">
+			<!-- Player Total -->
+			<div class="col-sm-2 player-total">
+				Player Total <span class="player-total-number">0</span>	
+			</div>
+			<div class="col-sm-1 buttons-lower">
+				<button class="btn btn-lg btn-secondary reset-button">Reset Game</button>
+			</div>
+			<div class="col-sm-1 buttons-lower">
+				<button class="btn btn-lg btn-secondary split-button">Split</button>
+			</div>
 		</div>
-	</div>
-	<div class="row">
-		<!-- Player Total -->
-		<div class="col-sm-2 player-total">
-			Player Total <span class="player-total-number">0</span>	
-		</div>
-		<div class="col-sm-1 buttons-lower">
-			<button class="btn btn-lg btn-secondary reset-button">Reset Game</button>
-		</div>
-		<div class="col-sm-1 buttons-lower">
-			<button class="btn btn-lg btn-secondary split-button">Split</button>
-		</div>
-	</div>
-	<div id="modal-messages">
-		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-			<div class="modal-dialog" role="document">
-			    <div class="modal-content">
-			      	<div class="modal-header">
-			        	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			        	<h4 class="modal-title" id="myModalLabel">Modal title</h4>
-			      	</div>
-			     	<div class="modal-body">
-			        	...
-			     	</div>
-			      	<div class="modal-footer">
-			        	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			        	<button type="button" class="btn btn-primary">Save changes</button>
-			      	</div>
-			    </div>
-		  	</div>
-		</div>
-	</div>
-	<div class="row">
-		<div id="arm-rest">
-			<!-- 	the table -->
-			<div class="the-table col-sm-10 col-sm-offset-1">
-				<div class="row">
-					<!-- The dealer -->
-					<div class="col-sm-12 dealer-hand-wrapper">
-						<div class="col-sm-9 dealer-cards"></div>
+		<div class="row">
+			<div id="arm-rest">
+				<!-- 	the table -->
+				<div class="the-table col-sm-10 col-sm-offset-1">
+					<div class="row">
+						<!-- The dealer -->
+						<div class="col-sm-12 dealer-hand-wrapper">
+							<div class="col-sm-9 dealer-cards"></div>
+						</div>
 					</div>
-				</div>
-				<div class="row">
-					<!-- Player -->
-					<div class="col-sm-12 player-hand-wrapper">
-						<div class="col-sm-9 player-cards"></div>
+					<div class="row">
+						<!-- Player -->
+						<div class="col-sm-12 player-hand-wrapper">
+							<div class="col-sm-9 player-cards"></div>
+						</div>
 					</div>
-				</div>
-				<div id="deckOfCards">
-					<img class="deck-card deck-card0" src="images/deck.png">
+					<div id="deckOfCards">
+						<img class="deck-card deck-card0" src="images/deck.png">
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
 
+	<!-- Modal -->
+	<div class="modal fade" id="playerWins" tabindex="-1" role="dialog" aria-labelledby="playerWins">
+		 <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      	<div class="modal-header">
+		        	<h1 class="modal-title text-center" id="playerWinsTitle">You win!</h1>
+		      	</div>
+		      	<div class="modal-body text-center">
+					<h2>Congratulations!</h2>
+		      	</div>
+		    </div>
+		</div>
+	</div>
 
+	<!-- Modal -->
+	<div class="modal fade" id="playerBusts" tabindex="-1" role="dialog" aria-labelledby="playerBusts">
+		 <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      	<div class="modal-header">
+		        	<h1 class="modal-title text-center" id="playerBustsTitle">You bust.</h1>
+		      	</div>
+		      	<div class="modal-body text-center">
+					<h2>Better luck next time!</h2>
+		      	</div>
+		    </div>
+		</div>
+	</div>
+
+	<!-- Modal -->
+	<div class="modal fade" id="dealerWins" tabindex="-1" role="dialog" aria-labelledby="dealerWins">
+		 <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      	<div class="modal-header">
+		        	<h1 class="modal-title text-center" id="dealerWinsTitle">Dealer Wins.</h1>
+		      	</div>
+		      	<div class="modal-body text-center">
+					<h2>Better luck next time!</h2>
+		      	</div>
+		    </div>
+		</div>
+	</div>
+
+	<!-- Modal -->
+	<div class="modal fade" id="dealerBusts" tabindex="-1" role="dialog" aria-labelledby="dealerBusts">
+		 <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      	<div class="modal-header">
+		        	<h1 class="modal-title text-center" id="dealerBustsTitle">Dealer busts. You win!</h1>
+		      	</div>
+		      	<div class="modal-body text-center">
+					<h2>Congratulations!</h2>
+		      	</div>
+		    </div>
+		</div>
+	</div>
+
+	<!-- Modal -->
+	<div class="modal fade" id="pushTie" tabindex="-1" role="dialog" aria-labelledby="pushTie">
+		 <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      	<div class="modal-header">
+		        	<h1 class="modal-title text-center" id="pushTieTitle">Push. Dealer wins ties.</h1>
+		      	</div>
+		      	<div class="modal-body text-center">
+					<h2>Better luck next time!</h2>
+		      	</div>
+		    </div>
+		</div>
+	</div>
+
+	<!-- Modal -->
+	<div class="modal fade" id="playerBlackJack" tabindex="-1" role="dialog" aria-labelledby="playerBlackJack ">
+		 <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      	<div class="modal-header">
+		        	<h1 class="modal-title text-center" id="playerBlackJackTitle">Black Jack!</h1>
+		      	</div>
+		      	<div class="modal-body text-center">
+					<h2>Congratulations!</h2>
+		      	</div>
+		    </div>
+		</div>
+	</div>
 </body>
 </html>

@@ -363,3 +363,24 @@ button:active{
 	/* transform: rotateY(-180deg); */
 }
 
+.modal-dialog{
+	margin: auto;
+	width: 480px;
+	height: 300px;
+	margin-top: 300px;
+	color: #fff;
+	border-radius: 50px;
+}
+
+.modal-header, .modal-body {
+	background-image: url('paisley-background300.png');
+	background-color: rgb(32,87,109);
+}
+
+.modal-header{
+	border-radius: 5px 5px 0 0;
+}
+
+.modal-body{
+	border-radius: 0 0 5px 5px;
+}

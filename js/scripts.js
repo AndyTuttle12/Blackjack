@@ -62,10 +62,12 @@ $(document).ready(function(){
 		$('.dealt2').removeClass('dealt2');
 		$('.dDealt1').removeClass('dDealt1');
 		$('.dDealt2').removeClass('dDealt2');
+
 		if(calculateTotal(playersHand,'player') <= 21){
 			// add a card to js and document; update total
 			$('.double-button').attr('disabled', 'disabled');
 			playersHand.push(theDeck.shift());
+			$('.player-cards .card-3').addClass('dealt3');
 			var slotForNewCard = playersHand.length;
 			placeCard('player',slotForNewCard,playersHand[playersHand.length-1]);
 			calculateTotal(playersHand, 'player');
@@ -77,6 +79,7 @@ $(document).ready(function(){
 		$('.dealer-cards .card-2').html('<img src="images/' + hiddenDealerCard + '.png">');
 		while(dealerTotal < 17){
 			dealersHand.push(theDeck.shift());
+			$('.dealer-cards .card-3').addClass('dealerDealt3');
 			var slotForNewCard = dealersHand.length;
 			placeCard('dealer',slotForNewCard,dealersHand[dealersHand.length-1]);
 			dealerTotal = calculateTotal(dealersHand, 'dealer');
@@ -109,15 +112,20 @@ function checkWin(){
 	dealerTotal = calculateTotal(dealersHand,'dealer');
 
 	if(playerTotal > 21){
+		$("#playerBusts").modal("show");
 		// Player busted.
 	}else if(dealerTotal > 21){
+		$("#dealerBusts").modal("show");
 		// Dealer busted.
 	}else{
 		if(playerTotal > dealerTotal){
+			$("#playerWins").modal("show");
 			// player won.
 		}else if(dealerTotal > playerTotal){
+			$("#dealerWins").modal("show");
 			// Dealer won.
 		}else{
+			$("#pushTie").modal("show");
 			// push...no winner...default to dealer win.
 		}
 	}
