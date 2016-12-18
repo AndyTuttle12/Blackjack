@@ -15,7 +15,11 @@ $(document).ready(function(){
 
 	
 
+	$('.activeChip').draggable({
+		containment: '#the-table',
+		cursor: 'pointer'
 
+	});
 	// console.log("freshDeck on page - "+freshDeck);
 	$('.hit-button').attr('disabled', 'disabled');
 	$('.stand-button').attr('disabled', 'disabled');
