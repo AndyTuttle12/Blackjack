@@ -16,7 +16,19 @@
 	<script src="js/scripts.js" type="text/javascript"></script>
 </head>
 <body>
-
+	<div class="container-fluid player-bar">
+		<div class="row">
+			<div class="col-sm-4 header-left">
+				<span id="minTitle">Table Minimum: $5</span>			
+			</div>
+			<div class="col-sm-4 header-right">
+				<span id="totalTitle">Player Total: &nbsp;</span>
+				<div id="playerBank">
+					$<span>1000</span>
+				</div>				
+			</div>
+		</div>
+	</div>
 	<div class="container">
 		<div class="row">
 			<!-- Dealer Total -->
@@ -62,7 +74,7 @@
 						</div>
 					</div>
 					<div id="betArea">Place Bets Here</div>
-
+					<div id="cup-holder"></div>
 					<div id="deckOfCards">
 						<img class="deck-card deck-card0" src="images/the-deck.png">
 					</div>

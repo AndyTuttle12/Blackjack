@@ -17,10 +17,32 @@ $(document).ready(function(){
 
 	$('.activeChip').draggable({
 		containment: '#the-table',
-		cursor: 'pointer'
+		cursor: 'pointer',
+		revert: true
 
 	});
+
+	$('#betArea').droppable({
+		left: 430,
+		top: 470,
+		height: 120,
+		width: 120,
+		tolerance: 'touch',
+		drop: droppedChip
+	});
+
+	function droppedChip(event, ui){
+		var currentChip = ui.draggable;
+		var currentChipX = ui.position.left;
+		var currentChipY = ui.position.top;
+		ui.draggable.draggable( 'option', 'revert', false );
+		$('.deal-button').removeAttr('disabled', 'disabled');	
+		console.log('yup');	
+	}
+
+
 	// console.log("freshDeck on page - "+freshDeck);
+	$('.deal-button').attr('disabled', 'disabled');
 	$('.hit-button').attr('disabled', 'disabled');
 	$('.stand-button').attr('disabled', 'disabled');
 	$('.double-button').attr('disabled', 'disabled');
