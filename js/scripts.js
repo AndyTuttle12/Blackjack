@@ -6,6 +6,7 @@ var topOfDeck = 4;
 var hiddenDealerCard;
 var handSize = 6;
 var setHTML = '';
+var currentBet = 0;
 // ---------------------------
 
 $(document).ready(function(){
@@ -31,14 +32,7 @@ $(document).ready(function(){
 		drop: droppedChip
 	});
 
-	function droppedChip(event, ui){
-		var currentChip = ui.draggable;
-		var currentChipX = ui.position.left;
-		var currentChipY = ui.position.top;
-		ui.draggable.draggable( 'option', 'revert', false );
-		$('.deal-button').removeAttr('disabled', 'disabled');	
-		console.log('yup');	
-	}
+	
 
 
 	// console.log("freshDeck on page - "+freshDeck);
@@ -48,6 +42,7 @@ $(document).ready(function(){
 	$('.double-button').attr('disabled', 'disabled');
 	$('.split-button').hide();
 	$('.reset-button').hide();
+	$('.bet-amount').hide();
 	// Major Buttons for the game
 	$('.deal-button').click(function(){
 		shuffleDeck(); // now shuffled!
@@ -113,6 +108,7 @@ $(document).ready(function(){
 		}
 		$('.stand-button').attr('disabled', 'disabled');
 		$('.hit-button').attr('disabled', 'disabled');
+		$('.double-button').attr('disabled', 'disabled');
 		$('.dealer-total-number').show();
 
 		checkWin();
@@ -133,6 +129,35 @@ $(document).ready(function(){
 
 
 });
+
+function droppedChip(event, ui){
+	
+	var currentChip = ui.draggable;
+	// var currentChipX = ui.position.left;
+	// var currentChipY = ui.position.top;
+	ui.draggable.draggable( 'option', 'revert', false );
+	calculateBet();
+
+	$('.deal-button').removeAttr('disabled', 'disabled');
+	$('.bet-amount').show();
+}
+
+function calculateBet(){
+	var selectedChip = $('.activeChip');
+	for(let i = 0; i < 4; i++){
+		if(selectedChip[i].src == "5Chip.png"){
+			currentBet += 5;
+			console.log('added 5');
+		}else if(selectedChip[i].src == "10Chip.png"){
+			currentBet += 10;
+		}else if(selectedChip[i].src == "25Chip.png"){
+			currentBet += 25;
+		}else if(selectedChip[i].src == "100Chip.png"){
+			currentBet += 100;
+		}
+	}
+}
+
 
 function checkWin(){
 	playerTotal = calculateTotal(playersHand,'player');
@@ -192,6 +217,7 @@ function reset(){
 	$('.dealt2').removeClass('dealt2');
 	$('.dDealt1').removeClass('dDealt1');
 	$('.dDealt2').removeClass('dDealt2');
+	$('.bet-amount').hide();
 
 	// console.log(theDeck);
 	playerTotal = calculateTotal(playersHand,'player');
