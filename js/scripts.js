@@ -229,6 +229,7 @@ function reset(){
 function createDeck(){
 	var newDeck = [];
 	var suits = ['h','s','d','c'];
+	// suits.map(()=>{}).map()
 	for(let s = 0; s < suits.length; s++){
 		for(let c = 1; c <= 13; c++){
 			newDeck.push(c+suits[s]);
