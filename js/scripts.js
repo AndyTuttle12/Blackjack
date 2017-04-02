@@ -19,6 +19,8 @@ $(document).ready(function(){
 	$('.activeChip').draggable({
 		containment: '#the-table',
 		cursor: 'pointer',
+		cursorAt: { top: 18, left: 29 },
+		helper: "clone",
 		revert: true
 
 	});
@@ -29,6 +31,7 @@ $(document).ready(function(){
 		height: 120,
 		width: 120,
 		tolerance: 'touch',
+		helper: "clone",
 		drop: droppedChip
 	});
 
@@ -135,7 +138,7 @@ function droppedChip(event, ui){
 	var currentChip = ui.draggable;
 	// var currentChipX = ui.position.left;
 	// var currentChipY = ui.position.top;
-	ui.draggable.draggable( 'option', 'revert', false );
+	ui.clone.draggable( 'option', 'revert', false );
 	calculateBet();
 
 	$('.deal-button').removeAttr('disabled', 'disabled');
@@ -308,18 +311,4 @@ function buildDivs(){
 $('#myModal').on('show.bs.modal', function (e) {
   if (!data) return e.preventDefault() // stops modal from being shown
 })
-
-// function arrangeDeck(){
-// 	// var deckArray = $('.deckOfCards').hasClass('.deck-card');
-// 	var cardLeft = 0;
-// 	var cardTop = 52;
-
-// 	for(let i = 1; i <= 52; i++){
-// 		$('.deck-card' + i).css({'left':cardLeft + 'px;','top':cardTop + 'px;'});
-// 		cardLeft+=.75;
-// 		cardTop-=1.25;
-// 		console.log("test");
-// 	}
-// }
-// arrangeDeck();
 
