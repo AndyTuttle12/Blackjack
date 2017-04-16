@@ -134,31 +134,37 @@ $(document).ready(function(){
 });
 
 function droppedChip(event, ui){
-	
 	var currentChip = ui.draggable;
+	console.log(event)
+	console.log(ui)
 	// var currentChipX = ui.position.left;
 	// var currentChipY = ui.position.top;
-	ui.clone.draggable( 'option', 'revert', false );
-	calculateBet();
+	// ui.clone.draggable( 'option', 'revert', false );
+	
+	ui.draggable.draggable( 'option', 'revert', false );
 
+	calculateBet();
 	$('.deal-button').removeAttr('disabled', 'disabled');
 	$('.bet-amount').show();
 }
 
 function calculateBet(){
 	var selectedChip = $('.activeChip');
-	for(let i = 0; i < 4; i++){
-		if(selectedChip[i].src == "5Chip.png"){
+	console.log(selectedChip)
+	for(let i = 0; i < selectedChip.length; i++){
+		console.log(selectedChip[i])
+		if($('#five').hasClass('ui-draggable-dragging')){
 			currentBet += 5;
-			console.log('added 5');
-		}else if(selectedChip[i].src == "10Chip.png"){
+		}else if($('#ten').hasClass('ui-draggable-dragging'){
 			currentBet += 10;
-		}else if(selectedChip[i].src == "25Chip.png"){
+		}else if($('#twentyFive').hasClass('ui-draggable-dragging')){
 			currentBet += 25;
-		}else if(selectedChip[i].src == "100Chip.png"){
+		}else if($('#hundred').hasClass('ui-draggable-dragging')){
 			currentBet += 100;
 		}
+
 	}
+	console.log(currentBet)
 }
 
 
