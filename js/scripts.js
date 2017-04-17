@@ -7,6 +7,7 @@ var hiddenDealerCard;
 var handSize = 6;
 var setHTML = '';
 var currentBet = 0;
+var betChips = [];
 // ---------------------------
 
 $(document).ready(function(){
@@ -136,7 +137,7 @@ $(document).ready(function(){
 function droppedChip(event, ui){
 	var currentChip = ui.draggable;
 	console.log(event)
-	console.log(ui)
+	console.log(ui.draggable)
 	// var currentChipX = ui.position.left;
 	// var currentChipY = ui.position.top;
 	// ui.clone.draggable( 'option', 'revert', false );
@@ -150,21 +151,45 @@ function droppedChip(event, ui){
 
 function calculateBet(){
 	var selectedChip = $('.activeChip');
-	console.log(selectedChip)
 	for(let i = 0; i < selectedChip.length; i++){
-		console.log(selectedChip[i])
-		if($('#five').hasClass('ui-draggable-dragging')){
-			currentBet += 5;
-		}else if($('#ten').hasClass('ui-draggable-dragging'){
-			currentBet += 10;
-		}else if($('#twentyFive').hasClass('ui-draggable-dragging')){
-			currentBet += 25;
-		}else if($('#hundred').hasClass('ui-draggable-dragging')){
-			currentBet += 100;
+		if(selectedChip[i].id === ''){
+			// console.log(selectedChip[i])
+			// console.log(selectedChip[i].className)
+			if(selectedChip[i].className=='activeChip fiveChip ui-draggable ui-draggable-handle ui-draggable-dragging'){
+				// console.log('5')
+				// currentBet += 5;
+				betChips.push(5);
+				break;
+			}
+			if(selectedChip[i].className=='activeChip tenChip ui-draggable ui-draggable-handle ui-draggable-dragging'){
+				// console.log('10')
+				// currentBet += 10;
+				betChips.push(10);
+				break;
+			}
+			if(selectedChip[i].className=='activeChip twentyFiveChip ui-draggable ui-draggable-handle ui-draggable-dragging'){
+				// console.log('25')
+				// currentBet += 25;
+				betChips.push(25);
+				break;
+			}
+			if(selectedChip[i].className=='activeChip hundredChip ui-draggable ui-draggable-handle ui-draggable-dragging'){
+				// console.log('100')
+				// currentBet += 100;
+				betChips.push(100);
+				break;
+			}
 		}
-
 	}
-	console.log(currentBet)
+	// console.log(currentBet)
+	// console.log(betChips)	
+	currentBet = betChips.reduce(betSum);
+	// console.log(currentBet)
+	$('#bet-amount').html(currentBet);
+}
+
+function betSum(runningTotal, number) {
+    return runningTotal + number;
 }
 
 
