@@ -32,7 +32,6 @@ $(document).ready(function(){
 		height: 120,
 		width: 120,
 		tolerance: 'touch',
-		helper: "clone",
 		drop: droppedChip
 	});
 
@@ -136,17 +135,23 @@ $(document).ready(function(){
 
 function droppedChip(event, ui){
 	var currentChip = ui.draggable;
-	console.log(event)
-	console.log(ui.draggable)
+	// console.log(event)
+	// console.log(ui)
 	// var currentChipX = ui.position.left;
 	// var currentChipY = ui.position.top;
 	// ui.clone.draggable( 'option', 'revert', false );
 	
-	ui.draggable.draggable( 'option', 'revert', false );
-
+	ui.draggable.draggable({revert:false,opacity:1,helper:'original'});
+	
 	calculateBet();
+	console.log($(this))
+	$(this).append($(ui.draggable));
 	$('.deal-button').removeAttr('disabled', 'disabled');
 	$('.bet-amount').show();
+	
+	ui.helper.draggable({revert:false,opacity:1});
+	
+	// ui.helper.draggable('instance');
 }
 
 function calculateBet(){
@@ -161,19 +166,19 @@ function calculateBet(){
 				betChips.push(5);
 				break;
 			}
-			if(selectedChip[i].className=='activeChip tenChip ui-draggable ui-draggable-handle ui-draggable-dragging'){
+			else if(selectedChip[i].className=='activeChip tenChip ui-draggable ui-draggable-handle ui-draggable-dragging'){
 				// console.log('10')
 				// currentBet += 10;
 				betChips.push(10);
 				break;
 			}
-			if(selectedChip[i].className=='activeChip twentyFiveChip ui-draggable ui-draggable-handle ui-draggable-dragging'){
+			else if(selectedChip[i].className=='activeChip twentyFiveChip ui-draggable ui-draggable-handle ui-draggable-dragging'){
 				// console.log('25')
 				// currentBet += 25;
 				betChips.push(25);
 				break;
 			}
-			if(selectedChip[i].className=='activeChip hundredChip ui-draggable ui-draggable-handle ui-draggable-dragging'){
+			else if(selectedChip[i].className=='activeChip hundredChip ui-draggable ui-draggable-handle ui-draggable-dragging'){
 				// console.log('100')
 				// currentBet += 100;
 				betChips.push(100);
