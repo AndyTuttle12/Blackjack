@@ -47,6 +47,7 @@ $(document).ready(function(){
 	$('.deal-button').click(function(){
 		bankTotal -= currentBet;
 		$('#bankAmount').html(bankTotal);
+		console.log(bankTotal)
 		shuffleDeck(); // now shuffled!
 		playersHand.push(theDeck.shift());
 		dealersHand.push(theDeck.shift());
@@ -205,7 +206,9 @@ function checkWin(){
 		// Player busted.
 	}else if(dealerTotal > 21){
 		$("#dealerBusts").modal("show");
-		// Dealer busted.
+		bankTotal += (currentBet * 2);
+		$('#bankAmount').html(bankTotal);
+		// Dealer busted; player won.
 	}else{
 		if(playerTotal > dealerTotal){
 			$("#playerWins").modal("show");
