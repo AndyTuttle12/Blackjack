@@ -27,11 +27,7 @@ $(document).ready(function(){
 	});
 
 	$('#betArea').droppable({
-		left: 430,
-		top: 470,
-		height: 120,
-		width: 120,
-		tolerance: 'touch',
+		tolerance: 'fit',
 		drop: droppedChip
 	});
 
@@ -141,11 +137,10 @@ function droppedChip(event, ui){
 	// var currentChipY = ui.position.top;
 	// ui.clone.draggable( 'option', 'revert', false );
 	
-	ui.draggable.draggable({revert:false,opacity:1,helper:'original'});
+	ui.draggable.draggable({revert:false,opacity:1,helper:'original',margin:0});
 	
 	calculateBet();
-	console.log($(this))
-	$(this).append($(ui.draggable));
+	$(this).append($(ui.draggable).draggable({revert:true,containment:'#the-table',cursor:'pointer',cursorAt:{ top: 18, left: 29 },position:{ top:50, left:112 }}));
 	$('.deal-button').removeAttr('disabled', 'disabled');
 	$('.bet-amount').show();
 	
