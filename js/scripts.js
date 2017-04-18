@@ -8,6 +8,7 @@ var handSize = 6;
 var setHTML = '';
 var currentBet = 0;
 var betChips = [];
+var bankTotal = 1000;
 // ---------------------------
 
 $(document).ready(function(){
@@ -44,6 +45,8 @@ $(document).ready(function(){
 	$('.bet-amount').hide();
 	// Major Buttons for the game
 	$('.deal-button').click(function(){
+		bankTotal -= currentBet;
+		$('#bankAmount').html(bankTotal);
 		shuffleDeck(); // now shuffled!
 		playersHand.push(theDeck.shift());
 		dealersHand.push(theDeck.shift());
@@ -206,12 +209,16 @@ function checkWin(){
 	}else{
 		if(playerTotal > dealerTotal){
 			$("#playerWins").modal("show");
+			bankTotal += (currentBet * 2);
+			$('#bankAmount').html(bankTotal);
 			// player won.
 		}else if(dealerTotal > playerTotal){
 			$("#dealerWins").modal("show");
 			// Dealer won.
 		}else if(playerTotal == 21 && playerTotal > dealerTotal){
 			$("#playerWins").modal("show");
+			bankTotal += (currentBet + ((currentBet * 3)/2));
+			$('#bankAmount').html(bankTotal);
 			//player won with BlackJack
 		}else{
 			$("#pushTie").modal("show");

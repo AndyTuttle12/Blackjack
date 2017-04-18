@@ -495,10 +495,10 @@ button:active{
 
 #betArea{
 	position: absolute;
-	left: 500px;
+	left: 575px;
 	top: 480px;
 	height: 100px;
-	width: 240px;
+	width: 140px;
 	border: 2px solid #ded40a;
 	border-radius: 15px;
 	color: #ded40a;
