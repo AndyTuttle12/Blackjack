@@ -26,8 +26,8 @@ $(document).ready(function(){
 
 	});
 
-	$('#betArea').droppable({
-		tolerance: 'fit',
+	$('#dropArea').droppable({
+		tolerance: 'touch',
 		drop: droppedChip
 	});
 
@@ -185,7 +185,7 @@ function calculateBet(){
 	// console.log(betChips)	
 	currentBet = betChips.reduce(betSum);
 	// console.log(currentBet)
-	$('#bet-amount').html(currentBet);
+	$('#bet-amount').html('$'+currentBet);
 }
 
 function betSum(runningTotal, number) {
