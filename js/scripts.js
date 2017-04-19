@@ -47,7 +47,7 @@ $(document).ready(function(){
 	$('.deal-button').click(function(){
 		bankTotal -= currentBet;
 		$('#bankAmount').html(bankTotal);
-		console.log(bankTotal)
+		// console.log(bankTotal)
 		shuffleDeck(); // now shuffled!
 		playersHand.push(theDeck.shift());
 		dealersHand.push(theDeck.shift());
@@ -154,6 +154,8 @@ function droppedChip(event, ui){
 }
 
 function calculateBet(){
+	betChips = betChips;
+	// console.log(betChips)
 	var selectedChip = $('.activeChip');
 	for(let i = 0; i < selectedChip.length; i++){
 		if(selectedChip[i].id === ''){
@@ -186,9 +188,15 @@ function calculateBet(){
 		}
 	}
 	// console.log(currentBet)
-	// console.log(betChips)	
-	currentBet = betChips.reduce(betSum);
-	// console.log(currentBet)
+	console.log(betChips)
+	if(betChips == []){
+		currentBet = 0;
+		console.log("betChips is empty")
+	}else if(betChips !== []){
+		console.log("betChips has chips")
+		currentBet = betChips.reduce(betSum);
+	}	
+	console.log(currentBet)
 	$('#bet-amount').html('$'+currentBet);
 }
 
@@ -258,7 +266,14 @@ function reset(){
 
 	// reset bet chips
 	$('#dropArea').empty();
+	betChips = [0];
+	calculateBet();
 	betChips = [];
+	$('.deal-button').attr('disabled', 'disabled');
+	$('.hit-button').attr('disabled', 'disabled');
+	$('.stand-button').attr('disabled', 'disabled');
+	$('.double-button').attr('disabled', 'disabled');
+	console.log($('.deal-button'));
 	$('#fiveChip').html('<img id="five1" class="activeChip fiveChip" src="5chip.png">'+
 						'<img id="five2" class="activeChip fiveChip" src="5chip.png">'+
 						'<img id="five3" class="activeChip fiveChip" src="5chip.png">'+
@@ -323,8 +338,22 @@ function reset(){
 	// console.log(theDeck);
 	playerTotal = calculateTotal(playersHand,'player');
 	dealerTotal = calculateTotal(dealersHand,'dealer');
-	$('.deal-button').removeAttr('disabled', 'disabled');
+	// $('.deal-button').removeAttr('disabled', 'disabled');
 	buildDivs();
+	$('.activeChip').draggable({
+		containment: '#the-table',
+		cursor: 'pointer',
+		cursorAt: { top: 18, left: 29 },
+		helper: "clone",
+		revert: true
+
+	});
+
+	$('#dropArea').droppable({
+		tolerance: 'touch',
+		drop: droppedChip
+	});
+
 }
 
 function createDeck(){
