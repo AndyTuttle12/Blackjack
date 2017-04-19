@@ -223,7 +223,12 @@ function checkWin(){
 		$('#bankAmount').html(bankTotal);
 		// Dealer busted; player won.
 	}else{
-		if(playerTotal > dealerTotal){
+		if(playerTotal == 21 && playerTotal > dealerTotal){
+			$("#playerWins").modal("show");
+			bankTotal += (currentBet + ((currentBet * 3)/2));
+			$('#bankAmount').html(bankTotal);
+			//player won with BlackJack
+		}else if(playerTotal > dealerTotal){
 			$("#playerWins").modal("show");
 			bankTotal += (currentBet * 2);
 			$('#bankAmount').html(bankTotal);
@@ -231,11 +236,6 @@ function checkWin(){
 		}else if(dealerTotal > playerTotal){
 			$("#dealerWins").modal("show");
 			// Dealer won.
-		}else if(playerTotal == 21 && playerTotal > dealerTotal){
-			$("#playerWins").modal("show");
-			bankTotal += (currentBet + ((currentBet * 3)/2));
-			$('#bankAmount').html(bankTotal);
-			//player won with BlackJack
 		}else{
 			$("#pushTie").modal("show");
 			// push...no winner...default to dealer win.
@@ -248,6 +248,7 @@ function checkBlackJack(){
 	playerTotal = calculateTotal(playersHand,'player');
 	dealerTotal = calculateTotal(dealersHand,'dealer');
 	if(playerTotal == 21){
+
 		checkWin();
 
 		$('#playerBlackJack').modal("show");
