@@ -80,6 +80,7 @@ $(document).ready(function(){
 		$('.hit-button').removeAttr('disabled', 'disabled');
 		$('.stand-button').removeAttr('disabled', 'disabled');
 		$('.double-button').removeAttr('disabled', 'disabled');
+		$('#bet-reset').hide();
 	});
 
 	$('.hit-button').click(function(){

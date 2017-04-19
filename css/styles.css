@@ -64,10 +64,9 @@ body{
 	width: 130px;
 	height: 60px;
 	border: 2px solid #000;
-	border-bottom: 0;
 	color: #ded40a;
 	background-color: #333;
-	border-radius: 5px 5px 0 0;
+	border-radius: 5px;
 	padding: 0;
 	text-align: center;
 	z-index: 3;
@@ -77,7 +76,7 @@ button#bet-reset{
 	position: relative;
 	display: block;
 	z-index: 99;
-	margin: -3px 0 0 -2px;
+	margin: -7px 0 0 -2px;
 	border-radius: 0 0 5px 5px;
 	border: 2px solid black;
 	font-size: 12px;
@@ -114,7 +113,7 @@ button#bet-reset{
 	border: 80px solid transparent;
 	border-radius: 30px 30px 50% 50%;
 	margin: 20px 0 0 30px;
-	padding:  20px 0;
+	padding:  15px 0;
 	height: 480px;
 	width: 920px;
 	transform: perspective(1200px) translateY(0px);
