@@ -258,6 +258,9 @@ function checkWin(){
 			// push...no winner...default to dealer win.
 		}
 	}
+	if(bankTotal <= 0){
+		$("#playerLose").modal("show");
+	}
 	$('.reset-button').show();
 }
 
