@@ -119,7 +119,24 @@ $(document).ready(function(){
 	});
 
 	$('.double-button').click(function(){
+		bankTotal -= currentBet;
+		$('#bankAmount').html(bankTotal);
+		currentBet *= 2; 
+		$('#bet-amount').html('$'+currentBet);
+		$('.double-button').attr('disabled', 'disabled');
+		$('.dealt1').removeClass('dealt1');
+		$('.dealt2').removeClass('dealt2');
+		$('.dDealt1').removeClass('dDealt1');
+		$('.dDealt2').removeClass('dDealt2');
 
+		if(calculateTotal(playersHand,'player') <= 21){
+			// add a card to js and document; update total
+			playersHand.push(theDeck.shift());
+			$('.player-cards .card-3').addClass('dealt3');
+			var slotForNewCard = playersHand.length;
+			placeCard('player',slotForNewCard,playersHand[playersHand.length-1]);
+			calculateTotal(playersHand, 'player');
+		}
 	});
 
 	$('.split-button').click(function(){
