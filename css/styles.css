@@ -1,3 +1,7 @@
+*, *:focus, *:active{
+	outline-style: none;
+}
+
 body{
 	background-color: #444;
 }
@@ -60,10 +64,27 @@ body{
 	width: 130px;
 	height: 60px;
 	border: 2px solid #000;
+	border-bottom: 0;
 	color: #ded40a;
 	background-color: #333;
-	border-radius: 5px;
+	border-radius: 5px 5px 0 0;
+	padding: 0;
+	text-align: center;
 	z-index: 3;
+}
+
+button#bet-reset{
+	position: relative;
+	display: block;
+	z-index: 99;
+	margin: -3px 0 0 -2px;
+	border-radius: 0 0 5px 5px;
+	border: 2px solid black;
+	font-size: 12px;
+	font-weight: normal;
+	width: 130px;
+	height: 30px;
+	background-color: #333;
 }
 
 .container{

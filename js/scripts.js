@@ -125,6 +125,10 @@ $(document).ready(function(){
 
 	});
 
+	$('#bet-reset').click(function(){
+		reset();
+	});
+
 	$('.reset-button').click(function(){
 		reset();
 		$('.reset-button').hide();
