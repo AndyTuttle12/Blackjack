@@ -42,6 +42,7 @@ $(document).ready(function(){
 	$('.double-button').attr('disabled', 'disabled');
 	$('.split-button').hide();
 	$('.reset-button').hide();
+	$('.split-group').hide();
 	$('.bet-amount').hide();
 	// Major Buttons for the game
 	$('.deal-button').click(function(){
@@ -68,6 +69,18 @@ $(document).ready(function(){
 			$('.dealer-cards .card-2').addClass('dealerDealt2');
 			placeCard('dealer',2,dealersHand[1]);
 		}, 1200);
+
+		if(playersHand[0].length === 3 && playersHand[1].length === 3){
+			if(playersHand[0].slice(0,2) === playersHand[1].slice(0,2)){
+				$('.split-button').show();
+			}
+		}
+		else if(playersHand[0].length === 2 && playersHand[1].length === 2){
+			if(playersHand[0][0] === playersHand[1][0]){
+				$('.split-button').show();
+			}
+		}
+			
 
 
 		
@@ -140,7 +153,12 @@ $(document).ready(function(){
 	});
 
 	$('.split-button').click(function(){
-
+		$('.split-button').hide();
+		$('.hit-left').show();
+		$('.hit-right').show();
+		$('.hit-button').attr('disabled', 'disabled');
+		$('.player-cards .card-1').addClass('split1');
+		$('.player-cards .card-2').addClass('split2');
 	});
 
 	$('#bet-reset').click(function(){
