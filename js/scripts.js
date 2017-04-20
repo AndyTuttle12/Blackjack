@@ -40,7 +40,7 @@ $(document).ready(function(){
 	$('.hit-button').attr('disabled', 'disabled');
 	$('.stand-button').attr('disabled', 'disabled');
 	$('.double-button').attr('disabled', 'disabled');
-	$('.split-button').hide();
+	// $('.split-button').hide();
 	$('.reset-button').hide();
 	$('.split-group').hide();
 	$('.bet-amount').hide();
@@ -102,7 +102,7 @@ $(document).ready(function(){
 		$('.dDealt1').removeClass('dDealt1');
 		$('.dDealt2').removeClass('dDealt2');
 
-		if(calculateTotal(playersHand,'player') <= 21){
+		if(calculateTotal(playersHand,'player') < 21){
 			// add a card to js and document; update total
 			$('.double-button').attr('disabled', 'disabled');
 			playersHand.push(theDeck.shift());
@@ -154,11 +154,48 @@ $(document).ready(function(){
 
 	$('.split-button').click(function(){
 		$('.split-button').hide();
+		$('.split-group').show();
 		$('.hit-left').show();
 		$('.hit-right').show();
 		$('.hit-button').attr('disabled', 'disabled');
 		$('.player-cards .card-1').addClass('split1');
 		$('.player-cards .card-2').addClass('split2');
+	});
+
+	$('.hit-left').click(function(){
+		$('.dealt1').removeClass('dealt1');
+		$('.dealt2').removeClass('dealt2');
+		$('.dDealt1').removeClass('dDealt1');
+		$('.dDealt2').removeClass('dDealt2');
+
+		if(calculateTotal(playersHand,'player') < 21){
+			// add a card to js and document; update total
+			$('.double-button').attr('disabled', 'disabled');
+			playersHand.push(theDeck.shift());
+			$('.player-cards .card-3').addClass('dealt3');
+			$('.player-cards .card-3').addClass('split1');
+			var slotForNewCard = playersHand.length;
+			placeCard('player',slotForNewCard,playersHand[playersHand.length-1]);
+			calculateTotal(playersHand, 'player');
+		}
+	});
+
+	$('.hit-right').click(function(){
+		$('.dealt1').removeClass('dealt1');
+		$('.dealt2').removeClass('dealt2');
+		$('.dDealt1').removeClass('dDealt1');
+		$('.dDealt2').removeClass('dDealt2');
+
+		if(calculateTotal(playersHand,'player') < 21){
+			// add a card to js and document; update total
+			$('.double-button').attr('disabled', 'disabled');
+			playersHand.push(theDeck.shift());
+			$('.player-cards .card-4').addClass('dealt3');
+			$('.player-cards .card-4').addClass('split2');
+			var slotForNewCard = playersHand.length;
+			placeCard('player',slotForNewCard,playersHand[playersHand.length-1]);
+			calculateTotal(playersHand, 'player');
+		}
 	});
 
 	$('#bet-reset').click(function(){

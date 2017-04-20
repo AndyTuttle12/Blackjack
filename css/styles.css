@@ -173,7 +173,6 @@ button:active{
 	width: 74%;
 	text-align: left;
 	box-sizing: border-box;
-
 }
 
 .split-group{
@@ -297,6 +296,16 @@ button:active{
 
 .dealer-cards .card-back{
 
+}
+
+.player-cards .split1{
+	transition: .5s;
+	transform: translateX(-70px);
+}
+
+.player-cards .split2{
+	transition: .5s;
+	transform: translate(20px,50px);
 }
 
 .dealer-total{
