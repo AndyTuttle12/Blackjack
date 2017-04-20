@@ -109,11 +109,18 @@ $(document).ready(function(){
 			$('.player-cards .card-3').addClass('dealt3');
 			var slotForNewCard = playersHand.length;
 			placeCard('player',slotForNewCard,playersHand[playersHand.length-1]);
-			calculateTotal(playersHand, 'player');
+			if(calculateTotal(playersHand, 'player') >= 21){
+				stand();
+			}
 		}
+
 	});
 
 	$('.stand-button').click(function(){
+		stand();
+	});
+
+	function stand(){
 		var dealerTotal = calculateTotal(dealersHand,'dealer');
 		$('.dealer-cards .card-2').html('<img src="images/' + hiddenDealerCard + '.png">');
 		while(dealerTotal < 17){
@@ -127,9 +134,8 @@ $(document).ready(function(){
 		$('.hit-button').attr('disabled', 'disabled');
 		$('.double-button').attr('disabled', 'disabled');
 		$('.dealer-total-number').show();
-
 		checkWin();
-	});
+	};
 
 	$('.double-button').click(function(){
 		bankTotal -= currentBet;
@@ -148,7 +154,9 @@ $(document).ready(function(){
 			$('.player-cards .card-3').addClass('dealt3');
 			var slotForNewCard = playersHand.length;
 			placeCard('player',slotForNewCard,playersHand[playersHand.length-1]);
-			calculateTotal(playersHand, 'player');
+			if(calculateTotal(playersHand, 'player') >= 21){
+				stand();
+			}
 		}
 	});
 
@@ -176,7 +184,9 @@ $(document).ready(function(){
 			$('.player-cards .card-3').addClass('split1');
 			var slotForNewCard = playersHand.length;
 			placeCard('player',slotForNewCard,playersHand[playersHand.length-1]);
-			calculateTotal(playersHand, 'player');
+			if(calculateTotal(playersHand, 'player') >= 21){
+				stand();
+			}
 		}
 	});
 
@@ -194,7 +204,9 @@ $(document).ready(function(){
 			$('.player-cards .card-4').addClass('split2');
 			var slotForNewCard = playersHand.length;
 			placeCard('player',slotForNewCard,playersHand[playersHand.length-1]);
-			calculateTotal(playersHand, 'player');
+			if(calculateTotal(playersHand, 'player') >= 21){
+				stand();
+			}
 		}
 	});
 
