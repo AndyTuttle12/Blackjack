@@ -170,14 +170,18 @@ button:active{
 	float: left;
 	margin-top: -20px;
 	padding: 0 15px;
-	width: 74%;
+	width: 40%;
 	text-align: left;
 	box-sizing: border-box;
 }
 
 .split-group{
 	padding: 0;
-	max-width: 377px;
+	max-width: 500px;
+}
+
+.player-total.split-total{
+	margin-left: 15px;
 }
 
 .card{

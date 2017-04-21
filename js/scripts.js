@@ -40,10 +40,11 @@ $(document).ready(function(){
 	$('.hit-button').attr('disabled', 'disabled');
 	$('.stand-button').attr('disabled', 'disabled');
 	$('.double-button').attr('disabled', 'disabled');
-	// $('.split-button').hide();
+	$('.split-button').hide();
 	$('.reset-button').hide();
 	$('.split-group').hide();
 	$('.bet-amount').hide();
+	$('.split-total').hide();
 	// Major Buttons for the game
 	$('.deal-button').click(function(){
 		bankTotal -= currentBet;
@@ -165,6 +166,7 @@ $(document).ready(function(){
 		$('.split-group').show();
 		$('.hit-left').show();
 		$('.hit-right').show();
+		$('.split-total').show();
 		$('.hit-button').attr('disabled', 'disabled');
 		$('.player-cards .card-1').addClass('split1');
 		$('.player-cards .card-2').addClass('split2');
