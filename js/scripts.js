@@ -122,9 +122,11 @@ $(document).ready(function(){
 		$('.dealer-cards .card-2').html('<img src="images/' + hiddenDealerCard + '.png">');
 		while(dealerTotal < 17){
 			dealersHand.push(theDeck.shift());
-			$('.dealer-cards .card-3').addClass('dealerDealt3');
+			
 			var slotForNewCard = dealersHand.length;
+			$('.dealer-cards .card-'+slotForNewCard+'').addClass('dealerDealt'+slotForNewCard+'');
 			placeCard('dealer',slotForNewCard,dealersHand[dealersHand.length-1]);
+			
 			dealerTotal = calculateTotal(dealersHand, 'dealer');
 		}
 		$('.stand-button').attr('disabled', 'disabled');
@@ -195,9 +197,9 @@ $(document).ready(function(){
 			// add a card to js and document; update total
 			$('.double-button').attr('disabled', 'disabled');
 			playersHand.push(theDeck.shift());
-			$('.player-cards .card-2').addClass('splitLeft dealt2');
-			$('.player-cards .card').addClass('').show();
+			// $('.player-cards .card-2').addClass('splitLeft dealt2');
 			var slotForNewCard = playersHand.length;
+			$('.player-cards .card-'+slotForNewCard+'').addClass('splitLeft dealt'+slotForNewCard+'').show();
 			placeCard('player',slotForNewCard,playersHand[playersHand.length-1]);
 			console.log(playersHand)
 			calculateTotal(playersHand, 'player');
@@ -217,8 +219,8 @@ $(document).ready(function(){
 			// add a card to js and document; update total
 			$('.double-button').attr('disabled', 'disabled');
 			splitHand.push(theDeck.shift());
-			$('.player-cards .card-4').addClass('dealt4');
 			var slotForNewCard = splitHand.length;
+			$('.split-cards .card-'+slotForNewCard+'').addClass('splitDealt'+slotForNewCard+'').show();
 			placeCard('split',slotForNewCard,splitHand[splitHand.length-1]);
 			calculateTotal(splitHand, 'split');
 			if(calculateTotal(splitHand, 'split') >= 21 && calculateTotal(playersHand, 'player') >= 21){

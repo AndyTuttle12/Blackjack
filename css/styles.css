@@ -237,32 +237,38 @@ button:active{
 }
 
 .player-cards .card-1{
+	z-index: 7;
 	left: 430px;
 	top: 300px;
 	/* border: 2px solid #ded40a; */
 }
 
 .player-cards .card-2{
+	z-index: 7;
 	left: 450px;
 	top: 250px;
 }
 
 .player-cards .card-3{
+	z-index: 7;
 	left: 470px;
 	top: 200px;
 }
 
 .player-cards .card-4{
+	z-index: 7;
 	left: 490px;
 	top: 150px;
 }
 
 .player-cards .card-5{
+	z-index: 7;
 	left: 510px;
 	top: 100px;
 }
 
 .player-cards .card-6{
+	z-index: 7;
 	left: 530px;
 	top: 50px;
 }
@@ -307,32 +313,38 @@ button:active{
 }
 
 .split-cards .card-1{
-	left: 470px;
+	z-index: 5;
+	left: 490px;
 	top: 300px;
 }
 
 .split-cards .card-2{
-	left: 490px;
+	z-index: 5;
+	left: 510px;
 	top: 250px;
 }
 
 .split-cards .card-3{
-	left: 510px;
+	z-index: 5;
+	left: 530px;
 	top: 200px;
 }
 
 .split-cards .card-4{
-	left: 530px;
+	z-index: 5;
+	left: 550px;
 	top: 150px;
 }
 
 .split-cards .card-5{
-	left: 550px;
+	z-index: 5;
+	left: 570px;
 	top: 100px;
 }
 
 .split-cards .card-6{
-	left: 570px;
+	z-index: 5;
+	left: 590px;
 	top: 50px;
 }
 
@@ -502,32 +514,32 @@ button:active{
 }
 
 @keyframes sDealCard1{
-	0%{transform: translate(0px,0px)}
+	0%{transform: translate(-60px,0px)}
 	100%{}
 }
 
 @keyframes sDealCard2{
-	0%{transform: translate(0px,0px)}
+	0%{transform: translate(270px,-250px)}
 	100%{}
 }
 
 @keyframes sDealCard3{
-	0%{transform: translate(0px,0px)}
+	0%{transform: translate(210px,-200px)}
 	100%{}
 }
 
 @keyframes sDealCard4{
-	0%{transform: translate(0px,0px)}
+	0%{transform: translate(150px,-150px)}
 	100%{}
 }
 
 @keyframes sDealCard5{
-	0%{transform: translate(0px,0px)}
+	0%{transform: translate(90px,-100px)}
 	100%{}
 }
 
 @keyframes sDealCard6{
-	0%{transform: translate(0px,0px)}
+	0%{transform: translate(30px,-50px)}
 	100%{}
 }
 
