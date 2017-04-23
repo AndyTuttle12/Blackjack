@@ -169,8 +169,9 @@ $(document).ready(function(){
 		$('.split-amount').show();
 		$('.double-button').attr('disabled', 'disabled');
 		$('.hit-button').attr('disabled', 'disabled');
-		$('.player-cards .card-1').addClass('split1');
-		$('.player-cards .card-2').addClass('split2');
+		$('.player-cards .card-1').addClass('splitLeft');
+		$('.player-cards .card-2').addClass('card-1 sDealt1 splitRight').removeClass('card-2 dealt2');
+		$('.split-cards').append($('.player-cards .card-1 .sDealt1 .splitRight'));
 		splitHand.push(playersHand.pop());
 		console.log(splitHand);
 		calculateTotal(playersHand, 'player');
@@ -187,11 +188,11 @@ $(document).ready(function(){
 			// add a card to js and document; update total
 			$('.double-button').attr('disabled', 'disabled');
 			playersHand.push(theDeck.shift());
-			$('.player-cards .card-3').addClass('dealt3');
-			$('.player-cards .card-3').addClass('split1');
+			$('.player-cards .card-2').addClass('dealt2');
+			$('.player-cards .card-2').addClass('splitLeft');
 			var slotForNewCard = playersHand.length;
 			placeCard('player',slotForNewCard,playersHand[playersHand.length-1]);
-			if(calculateTotal(playersHand, 'player') >= 21){
+			if(calculateTotal(splitHand, 'split') >= 21 && calculateTotal(playersHand, 'player') >= 21){
 				stand();
 			}
 		}
@@ -203,15 +204,15 @@ $(document).ready(function(){
 		$('.dDealt1').removeClass('dDealt1');
 		$('.dDealt2').removeClass('dDealt2');
 
-		if(calculateTotal(playersHand,'player') < 21){
+		if(calculateTotal(splitHand,'split') < 21){
 			// add a card to js and document; update total
 			$('.double-button').attr('disabled', 'disabled');
-			playersHand.push(theDeck.shift());
-			$('.player-cards .card-4').addClass('dealt3');
-			$('.player-cards .card-4').addClass('split2');
-			var slotForNewCard = playersHand.length;
-			placeCard('player',slotForNewCard,playersHand[playersHand.length-1]);
-			if(calculateTotal(playersHand, 'player') >= 21){
+			splitHand.push(theDeck.shift());
+			$('.player-cards .card-4').addClass('dealt4');
+			$('.player-cards .card-4').addClass('splitRight');
+			var slotForNewCard = splitHand.length;
+			placeCard('player',slotForNewCard,splitHand[splitHand.length-1]);
+			if(calculateTotal(splitHand, 'split') >= 21 && calculateTotal(playersHand, 'player') >= 21){
 				stand();
 			}
 		}
@@ -536,6 +537,7 @@ function buildDivs(){
 	}
 	$('.dealer-cards').html(setHTML);
 	$('.player-cards').html(setHTML);
+	$('.split-cards').html(setHTML);
 }
 
 

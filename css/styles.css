@@ -306,14 +306,44 @@ button:active{
 
 }
 
-.player-cards .split1{
+.split-cards .card-1{
+	left: 450px;
+	top: 300px;
+}
+
+.split-cards .card-2{
+	left: 470px;
+	top: 250px;
+}
+
+.split-cards .card-3{
+	left: 490px;
+	top: 200px;
+}
+
+.split-cards .card-4{
+	left: 510px;
+	top: 150px;
+}
+
+.split-cards .card-5{
+	left: 530px;
+	top: 100px;
+}
+
+.split-cards .card-6{
+	left: 550px;
+	top: 50px;
+}
+
+.splitLeft{
 	transition: .5s;
 	transform: translateX(-70px);
 }
 
-.player-cards .split2{
+.splitRight{
 	transition: .5s;
-	transform: translate(20px,50px);
+	transform: translateX(20px);
 }
 
 .dealer-total{
