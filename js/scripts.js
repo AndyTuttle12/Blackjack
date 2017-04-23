@@ -2,6 +2,7 @@
 var theDeck = createDeck();
 var playersHand = [];
 var dealersHand = [];
+var splitHand = [];
 var topOfDeck = 4;
 var hiddenDealerCard;
 var handSize = 6;
@@ -13,10 +14,7 @@ var bankTotal = 1000;
 
 $(document).ready(function(){
 	
-
 	buildDivs();
-
-	
 
 	$('.activeChip').draggable({
 		containment: '#the-table',
@@ -24,7 +22,6 @@ $(document).ready(function(){
 		cursorAt: { top: 18, left: 29 },
 		helper: "clone",
 		revert: true
-
 	});
 
 	$('#dropArea').droppable({
@@ -32,19 +29,17 @@ $(document).ready(function(){
 		drop: droppedChip
 	});
 
-	
-
-
 	// console.log("freshDeck on page - "+freshDeck);
 	$('.deal-button').attr('disabled', 'disabled');
 	$('.hit-button').attr('disabled', 'disabled');
 	$('.stand-button').attr('disabled', 'disabled');
 	$('.double-button').attr('disabled', 'disabled');
-	$('.split-button').hide();
+	// $('.split-button').hide();
 	$('.reset-button').hide();
 	$('.split-group').hide();
 	$('.bet-amount').hide();
 	$('.split-total').hide();
+	$('.split-amount').hide();
 	// Major Buttons for the game
 	$('.deal-button').click(function(){
 		bankTotal -= currentBet;
@@ -122,6 +117,7 @@ $(document).ready(function(){
 	});
 
 	function stand(){
+		$('.split-group').hide();
 		var dealerTotal = calculateTotal(dealersHand,'dealer');
 		$('.dealer-cards .card-2').html('<img src="images/' + hiddenDealerCard + '.png">');
 		while(dealerTotal < 17){
@@ -162,14 +158,23 @@ $(document).ready(function(){
 	});
 
 	$('.split-button').click(function(){
+		bankTotal -= currentBet;
+		$('#bankAmount').html(bankTotal);
 		$('.split-button').hide();
 		$('.split-group').show();
 		$('.hit-left').show();
 		$('.hit-right').show();
 		$('.split-total').show();
+		$('#split-amount').html('$'+currentBet);
+		$('.split-amount').show();
+		$('.double-button').attr('disabled', 'disabled');
 		$('.hit-button').attr('disabled', 'disabled');
 		$('.player-cards .card-1').addClass('split1');
 		$('.player-cards .card-2').addClass('split2');
+		splitHand.push(playersHand.pop());
+		console.log(splitHand);
+		calculateTotal(playersHand, 'player');
+		calculateTotal(splitHand, 'split');
 	});
 
 	$('.hit-left').click(function(){
@@ -238,6 +243,7 @@ function droppedChip(event, ui){
 	$(this).append($(ui.draggable).draggable({revert:true,containment:'#the-table',cursor:'pointer',cursorAt:{ top: 18, left: 29 },position:{ top:50, left:112 }}));
 	$('.deal-button').removeAttr('disabled', 'disabled');
 	$('.bet-amount').show();
+	$('#bet-reset').show();
 	
 	ui.helper.draggable({revert:false,opacity:1});
 	
@@ -429,6 +435,7 @@ function reset(){
 	$('.dDealt1').removeClass('dDealt1');
 	$('.dDealt2').removeClass('dDealt2');
 	$('.bet-amount').hide();
+	$('.split-amount').hide();
 
 	// console.log(theDeck);
 	playerTotal = calculateTotal(playersHand,'player');
@@ -478,10 +485,11 @@ function placeCard(who, where, whatCard){
 	var classSelector = '.' + who + '-cards .card-' + where + ' .card-container .card-front';
 	var classSelector2 = '.' + who + '-cards .card-' + where + ' .card-container';
 	// example = .dealer-cards .card-1 .card-container .card-front
+	$('.dealer-total-number').hide();
 	$(classSelector).html('<img src="images/' + whatCard + '.png">');
 	if(classSelector == '.dealer-cards .card-2 .card-container .card-front'){
 		$(classSelector).html('<img src="images/deck.png">');
-		$('.dealer-total-number').hide();
+		
 		$('.deal-button').attr('disabled', 'disabled');
 	}
 	$(classSelector2).toggleClass('flip');

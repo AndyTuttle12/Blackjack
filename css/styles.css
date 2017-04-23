@@ -57,7 +57,7 @@ body{
 	margin-top: 5px;
 }
 
-.bet-amount{
+.bet-amount, .split-amount{
 	position: absolute;
 	left: 1000px;
 	top: 650px;
@@ -70,6 +70,10 @@ body{
 	padding: 0;
 	text-align: center;
 	z-index: 3;
+}
+
+.split-amount{
+	left: 1150px;
 }
 
 button#bet-reset{
@@ -577,9 +581,6 @@ button:active{
 	background: linear-gradient(to right,  rgba(222,212,10,0.8) 0%,rgba(234,224,22,1) 19%,rgba(254,244,42,1) 51%,rgba(234,224,22,1) 81%,rgba(222,212,10,0.8) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccded40a', endColorstr='#ccded40a',GradientType=1 ); /* IE6-9 */
 }
-
-
-
 
 .modal-dialog{
 	margin: auto;
