@@ -307,32 +307,32 @@ button:active{
 }
 
 .split-cards .card-1{
-	left: 450px;
+	left: 470px;
 	top: 300px;
 }
 
 .split-cards .card-2{
-	left: 470px;
+	left: 490px;
 	top: 250px;
 }
 
 .split-cards .card-3{
-	left: 490px;
+	left: 510px;
 	top: 200px;
 }
 
 .split-cards .card-4{
-	left: 510px;
+	left: 530px;
 	top: 150px;
 }
 
 .split-cards .card-5{
-	left: 530px;
+	left: 550px;
 	top: 100px;
 }
 
 .split-cards .card-6{
-	left: 550px;
+	left: 570px;
 	top: 50px;
 }
 
@@ -422,6 +422,24 @@ button:active{
 .dealerDealt6{
 	animation: dDealCard6 .6s;
 }
+.splitDealt1{
+	animation: sDealCard1 .6s;
+}
+.splitDealt2{
+	animation: sDealCard2 .6s;
+}
+.splitDealt3{
+	animation: sDealCard3 .6s;
+}
+.splitDealt4{
+	animation: sDealCard4 .6s;
+}
+.splitDealt5{
+	animation: sDealCard5 .6s;
+}
+.splitDealt6{
+	animation: sDealCard6 .6s;
+}
 
 @keyframes dealCard1{
 	0%{transform: translate(350px,-300px)}
@@ -480,6 +498,36 @@ button:active{
 
 @keyframes dDealCard6{
 	0%{transform: translate(460px,0px)}
+	100%{}
+}
+
+@keyframes sDealCard1{
+	0%{transform: translate(0px,0px)}
+	100%{}
+}
+
+@keyframes sDealCard2{
+	0%{transform: translate(0px,0px)}
+	100%{}
+}
+
+@keyframes sDealCard3{
+	0%{transform: translate(0px,0px)}
+	100%{}
+}
+
+@keyframes sDealCard4{
+	0%{transform: translate(0px,0px)}
+	100%{}
+}
+
+@keyframes sDealCard5{
+	0%{transform: translate(0px,0px)}
+	100%{}
+}
+
+@keyframes sDealCard6{
+	0%{transform: translate(0px,0px)}
 	100%{}
 }
 

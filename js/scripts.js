@@ -170,10 +170,13 @@ $(document).ready(function(){
 		$('.double-button').attr('disabled', 'disabled');
 		$('.hit-button').attr('disabled', 'disabled');
 		$('.player-cards .card-1').addClass('splitLeft');
-		$('.player-cards .card-2').addClass('card-1 sDealt1 splitRight').removeClass('card-2 dealt2');
-		$('.split-cards').append($('.player-cards .card-1 .sDealt1 .splitRight'));
+		$('.player-cards .card-2').addClass('card-1 splitRight').removeClass('card-2 dealt2').hide().removeClass('card-1 splitRight').addClass('card-2');
+		$('.split-cards .card-1').addClass('dealt2 splitDealt1');
 		splitHand.push(playersHand.pop());
-		console.log(splitHand);
+		// console.log(playersHand)
+		var slotForNewCard = splitHand.length;
+		placeCard('split',slotForNewCard,splitHand[splitHand.length-1]);
+		// console.log(splitHand);
 		calculateTotal(playersHand, 'player');
 		calculateTotal(splitHand, 'split');
 	});
@@ -181,6 +184,10 @@ $(document).ready(function(){
 	$('.hit-left').click(function(){
 		$('.dealt1').removeClass('dealt1');
 		$('.dealt2').removeClass('dealt2');
+		$('.dealt3').removeClass('dealt3');
+		$('.dealt4').removeClass('dealt4');
+		$('.dealt5').removeClass('dealt5');
+		$('.dealt6').removeClass('dealt6');
 		$('.dDealt1').removeClass('dDealt1');
 		$('.dDealt2').removeClass('dDealt2');
 
@@ -188,10 +195,12 @@ $(document).ready(function(){
 			// add a card to js and document; update total
 			$('.double-button').attr('disabled', 'disabled');
 			playersHand.push(theDeck.shift());
-			$('.player-cards .card-2').addClass('dealt2');
-			$('.player-cards .card-2').addClass('splitLeft');
+			$('.player-cards .card-2').addClass('splitLeft dealt2');
+			$('.player-cards .card').addClass('').show();
 			var slotForNewCard = playersHand.length;
 			placeCard('player',slotForNewCard,playersHand[playersHand.length-1]);
+			console.log(playersHand)
+			calculateTotal(playersHand, 'player');
 			if(calculateTotal(splitHand, 'split') >= 21 && calculateTotal(playersHand, 'player') >= 21){
 				stand();
 			}
@@ -209,9 +218,9 @@ $(document).ready(function(){
 			$('.double-button').attr('disabled', 'disabled');
 			splitHand.push(theDeck.shift());
 			$('.player-cards .card-4').addClass('dealt4');
-			$('.player-cards .card-4').addClass('splitRight');
 			var slotForNewCard = splitHand.length;
-			placeCard('player',slotForNewCard,splitHand[splitHand.length-1]);
+			placeCard('split',slotForNewCard,splitHand[splitHand.length-1]);
+			calculateTotal(splitHand, 'split');
 			if(calculateTotal(splitHand, 'split') >= 21 && calculateTotal(playersHand, 'player') >= 21){
 				stand();
 			}
@@ -286,15 +295,15 @@ function calculateBet(){
 		}
 	}
 	// console.log(currentBet)
-	console.log(betChips)
+	// console.log(betChips)
 	if(betChips == []){
 		currentBet = 0;
-		console.log("betChips is empty")
+		// console.log("betChips is empty")
 	}else if(betChips !== []){
-		console.log("betChips has chips")
+		// console.log("betChips has chips")
 		currentBet = betChips.reduce(betSum);
 	}	
-	console.log(currentBet)
+	// console.log(currentBet)
 	$('#bet-amount').html('$'+currentBet);
 }
 
