@@ -363,8 +363,10 @@ function reset(){
 	theDeck = createDeck();
 	playersHand = [];
 	dealersHand = [];
+	splitHand = [];
 	$('.card').html('');
-
+	$('.split-total').hide();
+	$('.split-button').show();
 	// reset bet chips
 	$('#dropArea').empty();
 	betChips = [0];
