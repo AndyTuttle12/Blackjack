@@ -317,32 +317,84 @@ function betSum(runningTotal, number) {
 function checkWin(){
 	playerTotal = calculateTotal(playersHand,'player');
 	dealerTotal = calculateTotal(dealersHand,'dealer');
-
-	if(playerTotal > 21){
-		$("#playerBusts").modal("show");
-		// Player busted.
-	}else if(dealerTotal > 21){
-		$("#dealerBusts").modal("show");
-		bankTotal += (currentBet * 2);
-		$('#bankAmount').html(bankTotal);
-		// Dealer busted; player won.
+	splitTotal = calculateTotal(splitHand,'split');
+	if(splitTotal !== 0){
+		currentBet *= 2;
+		// Split played
+		if(playerTotal > 21 && splitTotal > 21){
+			$("#playerBusts").modal("show");
+			// Player busted.
+		}else if(dealerTotal > 21){
+			// Dealer Busts...
+			if(playerTotal <= 21 && splitTotal <= 21){
+				$("#dealerBusts").modal("show");
+				bankTotal += (currentBet * 2);
+				$('#bankAmount').html(bankTotal);
+				// and Player wins both.
+			}else if(playerTotal <= 21 || splitTotal <= 21){
+				$('#halfBust').modal("show");
+				bankTotal += currentBet;
+				$('#bankAmount').html(bankTotal);
+				// and Player wins one, busts one.
+			}
+		}else if((playerTotal > 21 || splitTotal > 21) && dealerTotal <= 21){
+			// Player busts one and Dealer stays...
+			if(playerTotal > dealerTotal && splitTotal > dealerTotal){
+				$("#halfBust").modal("show");
+				bankTotal += currentBet;
+				$('#bankAmount').html(bankTotal);
+				// and Player wins one.
+			}else if(playerTotal === dealerTotal || splitTotal === dealerTotal){
+				$("#pushTie").modal("show");
+				// and Dealer Pushes win.
+			}else{
+				$("#dealerWins").modal("show");
+				// and dealer wins.
+			}
+		}else{
+			// No busts...
+			if(playerTotal > dealerTotal && splitTotal > dealerTotal){
+				$("#playerWins").modal("show");
+				bankTotal += (currentBet * 2);
+				$('#bankAmount').html(bankTotal);
+				// and Player wins Both.
+			}else if(playerTotal <= dealerTotal && splitTotal <= dealerTotal){
+				$("#dealerWins").modal("show");
+				// and Dealer wins or ties both.
+			}else if(playerTotal <= dealerTotal || splitTotal <= dealerTotal){
+				$("#halfWin").modal("show");
+				bankTotal += currentBet;
+				$('#bankAmount').html(bankTotal);
+				// and Player wins one.
+			}
+		}
 	}else{
-		if(playerTotal == 21 && playerTotal > dealerTotal){
-			$("#playerWins").modal("show");
-			bankTotal += (currentBet + ((currentBet * 3)/2));
-			$('#bankAmount').html(bankTotal);
-			//player won with BlackJack
-		}else if(playerTotal > dealerTotal){
-			$("#playerWins").modal("show");
+		if(playerTotal > 21){
+			$("#playerBusts").modal("show");
+			// Player busted.
+		}else if(dealerTotal > 21){
+			$("#dealerBusts").modal("show");
 			bankTotal += (currentBet * 2);
 			$('#bankAmount').html(bankTotal);
-			// player won.
-		}else if(dealerTotal > playerTotal){
-			$("#dealerWins").modal("show");
-			// Dealer won.
+			// Dealer busted; player won.
 		}else{
-			$("#pushTie").modal("show");
-			// push...no winner...default to dealer win.
+			if(playerTotal == 21 && playerTotal > dealerTotal){
+				$("#playerWins").modal("show");
+				bankTotal += (currentBet + ((currentBet * 3)/2));
+				$('#bankAmount').html(bankTotal);
+				//player won with BlackJack
+			}else if(playerTotal > dealerTotal){
+				$("#playerWins").modal("show");
+				bankTotal += (currentBet * 2);
+				$('#bankAmount').html(bankTotal);
+				// player won.
+			}else if(dealerTotal > playerTotal){
+				$("#dealerWins").modal("show");
+				// Dealer won.
+			}else{
+				$("#pushTie").modal("show");
+				// push...no winner...default to dealer win.
+			}
 		}
 	}
 	if(bankTotal <= 0){
