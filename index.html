@@ -52,11 +52,16 @@
 			</div>
 			<div class="col-sm-12 buttons-lower">
 				<button class="btn btn-lg btn-secondary reset-button">Reset Board</button>
+				<button class="btn btn-lg btn-secondary insurance-button">Take Insurance</button>
 				<button class="btn btn-lg btn-secondary split-button">Split</button>
 				<div class="col-sm-12 btn-group split-group btn-group-lg" role="group">		
 					<button class="btn btn-lg btn-secondary hit-left">Hit Left</button>		
 					<button class="btn btn-lg btn-secondary hit-right">Hit Right</button>		
 				</div>
+			</div>
+			<div class="col-sm-1 insurance-amount">
+				<p id="insurance bet-total">Insurance:</p>
+				<p id="insurance-amount">$$$</p>
 			</div>
 			<div class="col-sm-1 bet-amount">
 				<p id="bet-total">Current Bet:</p>
@@ -284,6 +289,34 @@
 		      	</div>
 		      	<div class="modal-body text-center">
 					<h2>Not half bad!</h2>
+		      	</div>
+		    </div>
+		</div>
+	</div>
+
+	<!-- Modal -->
+	<div class="modal fade" id="dealerBlackJack" tabindex="-1" role="dialog" aria-labelledby="dealerBlackJack">
+		 <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      	<div class="modal-header">
+		        	<h1 class="modal-title text-center" id="dealerBlackJackTitle">Dealer wins with Blackjack.</h1>
+		      	</div>
+		      	<div class="modal-body text-center">
+					<h2>Too bad! Not your lucky day.</h2>
+		      	</div>
+		    </div>
+		</div>
+	</div>
+
+	<!-- Modal -->
+	<div class="modal fade" id="insuranceWin" tabindex="-1" role="dialog" aria-labelledby="insuranceWin">
+		 <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      	<div class="modal-header">
+		        	<h1 class="modal-title text-center" id="insuranceWinTitle">Insurance payed 2 to 1!</h1>
+		      	</div>
+		      	<div class="modal-body text-center">
+					<h2>Great job playing the odds!</h2>
 		      	</div>
 		    </div>
 		</div>

@@ -57,7 +57,7 @@ body{
 	margin-top: 5px;
 }
 
-.bet-amount, .split-amount{
+.bet-amount, .split-amount, .insurance-amount{
 	position: absolute;
 	left: 1000px;
 	top: 650px;
@@ -70,6 +70,10 @@ body{
 	padding: 0;
 	text-align: center;
 	z-index: 3;
+}
+
+.insurance-amount{
+	left: 600px;
 }
 
 .split-amount{
