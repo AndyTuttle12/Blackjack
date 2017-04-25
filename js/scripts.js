@@ -410,57 +410,57 @@ function reset(){
 	$('.stand-button').attr('disabled', 'disabled');
 	$('.double-button').attr('disabled', 'disabled');
 	console.log($('.deal-button'));
-	$('#fiveChip').html('<img id="five1" class="activeChip fiveChip" src="5chip.png">'+
-						'<img id="five2" class="activeChip fiveChip" src="5chip.png">'+
-						'<img id="five3" class="activeChip fiveChip" src="5chip.png">'+
-						'<img id="five4" class="activeChip fiveChip" src="5chip.png">'+
-						'<img id="five5" class="activeChip fiveChip" src="5chip.png">'+
-						'<img id="five6" class="activeChip fiveChip" src="5chip.png">'+
-						'<img id="five7" class="activeChip fiveChip" src="5chip.png">'+
-						'<img id="five8" class="activeChip fiveChip" src="5chip.png">'+
-						'<img id="five9" class="activeChip fiveChip" src="5chip.png">'+
-						'<img id="five10" class="activeChip fiveChip" src="5chip.png">'+
+	$('#fiveChip').html('<img id="five1" class="activeChip fiveChip" src="images/5Chip.png">'+
+						'<img id="five2" class="activeChip fiveChip" src="images/5Chip.png">'+
+						'<img id="five3" class="activeChip fiveChip" src="images/5Chip.png">'+
+						'<img id="five4" class="activeChip fiveChip" src="images/5Chip.png">'+
+						'<img id="five5" class="activeChip fiveChip" src="images/5Chip.png">'+
+						'<img id="five6" class="activeChip fiveChip" src="images/5Chip.png">'+
+						'<img id="five7" class="activeChip fiveChip" src="images/5Chip.png">'+
+						'<img id="five8" class="activeChip fiveChip" src="images/5Chip.png">'+
+						'<img id="five9" class="activeChip fiveChip" src="images/5Chip.png">'+
+						'<img id="five10" class="activeChip fiveChip" src="images/5Chip.png">'+
 						'<div id="fiveChips">'+
-							'<img src="fiveChips.png">'+
+							'<img src="images/fiveChips.png">'+
 						'</div>');
-	$('#tenChip').html('<img id="ten1" class="activeChip tenChip" src="10chip.png">'+
-						'<img id="ten2" class="activeChip tenChip" src="10chip.png">'+
-						'<img id="ten3" class="activeChip tenChip" src="10chip.png">'+
-						'<img id="ten4" class="activeChip tenChip" src="10chip.png">'+
-						'<img id="ten5" class="activeChip tenChip" src="10chip.png">'+
-						'<img id="ten6" class="activeChip tenChip" src="10chip.png">'+
-						'<img id="ten7" class="activeChip tenChip" src="10chip.png">'+
-						'<img id="ten8" class="activeChip tenChip" src="10chip.png">'+
-						'<img id="ten9" class="activeChip tenChip" src="10chip.png">'+
-						'<img id="ten10" class="activeChip tenChip" src="10chip.png">'+
+	$('#tenChip').html('<img id="ten1" class="activeChip tenChip" src="images/10Chip.png">'+
+						'<img id="ten2" class="activeChip tenChip" src="images/10Chip.png">'+
+						'<img id="ten3" class="activeChip tenChip" src="images/10Chip.png">'+
+						'<img id="ten4" class="activeChip tenChip" src="images/10Chip.png">'+
+						'<img id="ten5" class="activeChip tenChip" src="images/10Chip.png">'+
+						'<img id="ten6" class="activeChip tenChip" src="images/10Chip.png">'+
+						'<img id="ten7" class="activeChip tenChip" src="images/10Chip.png">'+
+						'<img id="ten8" class="activeChip tenChip" src="images/10Chip.png">'+
+						'<img id="ten9" class="activeChip tenChip" src="images/10Chip.png">'+
+						'<img id="ten10" class="activeChip tenChip" src="images/10Chip.png">'+
 						'<div id="tenChips">'+
-							'<img src="tenChips.png">'+
+							'<img src="images/tenChips.png">'+
 						'</div>');
-	$('#twentyFiveChip').html('<img id="twentyFive1" class="activeChip twentyFiveChip" src="25chip.png">'+
-						'<img id="twentyFive2" class="activeChip twentyFiveChip" src="25chip.png">'+
-						'<img id="twentyFive3" class="activeChip twentyFiveChip" src="25chip.png">'+
-						'<img id="twentyFive4" class="activeChip twentyFiveChip" src="25chip.png">'+
-						'<img id="twentyFive5" class="activeChip twentyFiveChip" src="25chip.png">'+
-						'<img id="twentyFive6" class="activeChip twentyFiveChip" src="25chip.png">'+
-						'<img id="twentyFive7" class="activeChip twentyFiveChip" src="25chip.png">'+
-						'<img id="twentyFive8" class="activeChip twentyFiveChip" src="25chip.png">'+
-						'<img id="twentyFive9" class="activeChip twentyFiveChip" src="25chip.png">'+
-						'<img id="twentyFive10" class="activeChip twentyFiveChip" src="25chip.png">'+
+	$('#twentyFiveChip').html('<img id="twentyFive1" class="activeChip twentyFiveChip" src="images/25Chip.png">'+
+						'<img id="twentyFive2" class="activeChip twentyFiveChip" src="images/25Chip.png">'+
+						'<img id="twentyFive3" class="activeChip twentyFiveChip" src="images/25Chip.png">'+
+						'<img id="twentyFive4" class="activeChip twentyFiveChip" src="images/25Chip.png">'+
+						'<img id="twentyFive5" class="activeChip twentyFiveChip" src="images/25Chip.png">'+
+						'<img id="twentyFive6" class="activeChip twentyFiveChip" src="images/25Chip.png">'+
+						'<img id="twentyFive7" class="activeChip twentyFiveChip" src="images/25Chip.png">'+
+						'<img id="twentyFive8" class="activeChip twentyFiveChip" src="images/25Chip.png">'+
+						'<img id="twentyFive9" class="activeChip twentyFiveChip" src="images/25Chip.png">'+
+						'<img id="twentyFive10" class="activeChip twentyFiveChip" src="images/25Chip.png">'+
 						'<div id="twentyFiveChips">'+
-							'<img src="twentyFiveChips.png">'+
+							'<img src="images/twentyFiveChips.png">'+
 						'</div>');
-	$('#hundredChip').html('<img id="hundred1" class="activeChip hundredChip" src="100chip.png">'+
-						'<img id="hundred2" class="activeChip hundredChip" src="100chip.png">'+
-						'<img id="hundred3" class="activeChip hundredChip" src="100chip.png">'+
-						'<img id="hundred4" class="activeChip hundredChip" src="100chip.png">'+
-						'<img id="hundred5" class="activeChip hundredChip" src="100chip.png">'+
-						'<img id="hundred6" class="activeChip hundredChip" src="100chip.png">'+
-						'<img id="hundred7" class="activeChip hundredChip" src="100chip.png">'+
-						'<img id="hundred8" class="activeChip hundredChip" src="100chip.png">'+
-						'<img id="hundred9" class="activeChip hundredChip" src="100chip.png">'+
-						'<img id="hundred10" class="activeChip hundredChip" src="100chip.png">'+
+	$('#hundredChip').html('<img id="hundred1" class="activeChip hundredChip" src="images/100Chip.png">'+
+						'<img id="hundred2" class="activeChip hundredChip" src="images/100Chip.png">'+
+						'<img id="hundred3" class="activeChip hundredChip" src="images/100Chip.png">'+
+						'<img id="hundred4" class="activeChip hundredChip" src="images/100Chip.png">'+
+						'<img id="hundred5" class="activeChip hundredChip" src="images/100Chip.png">'+
+						'<img id="hundred6" class="activeChip hundredChip" src="images/100Chip.png">'+
+						'<img id="hundred7" class="activeChip hundredChip" src="images/100Chip.png">'+
+						'<img id="hundred8" class="activeChip hundredChip" src="images/100Chip.png">'+
+						'<img id="hundred9" class="activeChip hundredChip" src="images/100Chip.png">'+
+						'<img id="hundred10" class="activeChip hundredChip" src="images/100Chip.png">'+
 						'<div id="hundredChips">'+
-							'<img src="hundredChips.png">'+
+							'<img src="images/hundredChips.png">'+
 						'</div>');
 	$('.dealt1').removeClass('dealt1');
 	$('.dealt2').removeClass('dealt2');

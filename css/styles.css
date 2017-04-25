@@ -115,7 +115,7 @@ button#bet-reset{
 
 .the-table{
 	box-sizing: content-box;
-	background-image: url('../blackjack-table.png');
+	background-image: url('../images/blackjack-table.png');
 	background-position: center;
 	/* background: rgb(0,138,0); */
 	border: 80px solid transparent;
@@ -686,7 +686,7 @@ button:active{
 }
 
 .modal-header, .modal-body {
-	background-image: url('../paisley-background300.png');
+	background-image: url('../images/paisley-background300.png');
 	background-color: rgb(32,87,109);
 }
 
