@@ -17,7 +17,6 @@ var insuranceBet = 0;
 $(document).ready(function(){
 	
 	buildDivs();
-
 	$('.activeChip').draggable({
 		containment: '#the-table',
 		cursor: 'pointer',
@@ -25,13 +24,10 @@ $(document).ready(function(){
 		helper: "clone",
 		revert: true
 	});
-
 	$('#dropArea').droppable({
 		tolerance: 'touch',
 		drop: droppedChip
 	});
-
-	// console.log("freshDeck on page - "+freshDeck);
 	$('.deal-button').attr('disabled', 'disabled');
 	$('.hit-button').attr('disabled', 'disabled');
 	$('.stand-button').attr('disabled', 'disabled');
@@ -44,11 +40,11 @@ $(document).ready(function(){
 	$('.split-amount').hide();
 	$('.insurance-button').hide();
 	$('.insurance-amount').hide();
+
 	// Major Buttons for the game
 	$('.deal-button').click(function(){
 		bankTotal -= currentBet;
 		$('#bankAmount').html(bankTotal);
-		// console.log(bankTotal)
 		shuffleDeck(); // now shuffled!
 		playersHand.push(theDeck.shift());
 		dealersHand.push(theDeck.shift());
@@ -57,7 +53,6 @@ $(document).ready(function(){
 		if(dealersHand[0].length === 2 && dealersHand[0][0] === '1'){
 			$('.insurance-button').show();
 		}
-		// console.log("freshDeck after shifts - ", freshDeck);
 		$('.player-cards .card-1').addClass('dealt1');
 		placeCard('player',1,playersHand[0]);
 		setTimeout(function(){
@@ -72,7 +67,6 @@ $(document).ready(function(){
 			$('.dealer-cards .card-2').addClass('dealerDealt2');
 			placeCard('dealer',2,dealersHand[1]);
 		}, 1200);
-
 		if(playersHand[0].length === 3 && playersHand[1].length === 3){
 			if(playersHand[0].slice(0,2) === playersHand[1].slice(0,2)){
 				$('.split-button').show();
@@ -83,29 +77,22 @@ $(document).ready(function(){
 				$('.split-button').show();
 			}
 		}
-			
-
-
-		
 		hiddenDealerCard = dealersHand[1];
 		calculateTotal(playersHand, 'player');
 		calculateTotal(dealersHand, 'dealer');
 		checkBlackJack();
-
 		$('.deal-button').attr('disabled', 'disabled');
 		$('.hit-button').removeAttr('disabled', 'disabled');
 		$('.stand-button').removeAttr('disabled', 'disabled');
 		$('.double-button').removeAttr('disabled', 'disabled');
 		$('#bet-reset').hide();
 	});
-
 	$('.hit-button').click(function(){
 		$('.dealt1').removeClass('dealt1');
 		$('.dealt2').removeClass('dealt2');
 		$('.dDealt1').removeClass('dDealt1');
 		$('.dDealt2').removeClass('dDealt2');
 		$('.insurance-button').hide();
-
 		if(calculateTotal(playersHand,'player') < 21){
 			// add a card to js and document; update total
 			$('.double-button').attr('disabled', 'disabled');
@@ -117,13 +104,10 @@ $(document).ready(function(){
 				stand();
 			}
 		}
-
 	});
-
 	$('.stand-button').click(function(){
 		stand();
 	});
-
 	function stand(){
 		$('.split-group').hide();
 		$('.insurance-button').hide();
@@ -131,11 +115,9 @@ $(document).ready(function(){
 		$('.dealer-cards .card-2').html('<img src="images/' + hiddenDealerCard + '.png">');
 		while(dealerTotal < 17){
 			dealersHand.push(theDeck.shift());
-			
 			var slotForNewCard = dealersHand.length;
 			$('.dealer-cards .card-'+slotForNewCard+'').addClass('dealerDealt'+slotForNewCard+'');
 			placeCard('dealer',slotForNewCard,dealersHand[dealersHand.length-1]);
-			
 			dealerTotal = calculateTotal(dealersHand, 'dealer');
 		}
 		$('.stand-button').attr('disabled', 'disabled');
@@ -144,7 +126,6 @@ $(document).ready(function(){
 		$('.dealer-total-number').show();
 		checkWin();
 	};
-
 	$('.double-button').click(function(){
 		bankTotal -= currentBet;
 		$('#bankAmount').html(bankTotal);
@@ -156,7 +137,6 @@ $(document).ready(function(){
 		$('.dDealt1').removeClass('dDealt1');
 		$('.dDealt2').removeClass('dDealt2');
 		$('.insurance-button').hide();
-
 		if(calculateTotal(playersHand,'player') <= 21){
 			// add a card to js and document; update total
 			playersHand.push(theDeck.shift());
@@ -168,7 +148,6 @@ $(document).ready(function(){
 			}
 		}
 	});
-
 	$('.split-button').click(function(){
 		bankTotal -= currentBet;
 		$('#bankAmount').html(bankTotal);
@@ -186,14 +165,11 @@ $(document).ready(function(){
 		$('.split-cards .card-1').addClass('dealt2 splitDealt1');
 		$('.insurance-button').hide();
 		splitHand.push(playersHand.pop());
-		// console.log(playersHand)
 		var slotForNewCard = splitHand.length;
 		placeCard('split',slotForNewCard,splitHand[splitHand.length-1]);
-		// console.log(splitHand);
 		calculateTotal(playersHand, 'player');
 		calculateTotal(splitHand, 'split');
 	});
-
 	$('.hit-left').click(function(){
 		$('.dealt1').removeClass('dealt1');
 		$('.dealt2').removeClass('dealt2');
@@ -203,12 +179,10 @@ $(document).ready(function(){
 		$('.dealt6').removeClass('dealt6');
 		$('.dDealt1').removeClass('dDealt1');
 		$('.dDealt2').removeClass('dDealt2');
-
 		if(calculateTotal(playersHand,'player') < 21){
 			// add a card to js and document; update total
 			$('.double-button').attr('disabled', 'disabled');
 			playersHand.push(theDeck.shift());
-			// $('.player-cards .card-2').addClass('splitLeft dealt2');
 			var slotForNewCard = playersHand.length;
 			$('.player-cards .card-'+slotForNewCard+'').addClass('splitLeft dealt'+slotForNewCard+'').show();
 			placeCard('player',slotForNewCard,playersHand[playersHand.length-1]);
@@ -219,7 +193,6 @@ $(document).ready(function(){
 			}
 		}
 	});
-
 	$('.hit-right').click(function(){
 		$('.dealt1').removeClass('dealt1');
 		$('.dealt2').removeClass('dealt2');
@@ -239,7 +212,6 @@ $(document).ready(function(){
 			}
 		}
 	});
-
 	$('.insurance-button').click(function(){
 		bankTotal -= currentBet;
 		$('#bankAmount').html(bankTotal);
@@ -249,91 +221,60 @@ $(document).ready(function(){
 		$('#insurance-amount').html('$'+currentBet);
 		$('.insurance-amount').show();
 	});
-
 	$('#bet-reset').click(function(){
 		reset();
 	});
-
 	$('.reset-button').click(function(){
 		reset();
 		$('.reset-button').hide();
 	});
-
-
 });
 
 function droppedChip(event, ui){
-	var currentChip = ui.draggable;
-	// console.log(event)
-	// console.log(ui)
-	// var currentChipX = ui.position.left;
-	// var currentChipY = ui.position.top;
-	// ui.clone.draggable( 'option', 'revert', false );
-	
+	var currentChip = ui.draggable;	
 	ui.draggable.draggable({revert:false,opacity:1,helper:'original',margin:0});
-	
 	calculateBet();
 	$(this).append($(ui.draggable).draggable({revert:true,containment:'#the-table',cursor:'pointer',cursorAt:{ top: 18, left: 29 },position:{ top:50, left:112 }}));
 	$('.deal-button').removeAttr('disabled', 'disabled');
 	$('.bet-amount').show();
 	$('#bet-reset').show();
-	
 	ui.helper.draggable({revert:false,opacity:1});
-	
-	// ui.helper.draggable('instance');
 }
 
 function calculateBet(){
 	betChips = betChips;
-	// console.log(betChips)
 	var selectedChip = $('.activeChip');
 	for(let i = 0; i < selectedChip.length; i++){
 		if(selectedChip[i].id === ''){
-			// console.log(selectedChip[i])
-			// console.log(selectedChip[i].className)
 			if(selectedChip[i].className=='activeChip fiveChip ui-draggable ui-draggable-handle ui-draggable-dragging'){
-				// console.log('5')
-				// currentBet += 5;
 				betChips.push(5);
 				break;
 			}
 			else if(selectedChip[i].className=='activeChip tenChip ui-draggable ui-draggable-handle ui-draggable-dragging'){
-				// console.log('10')
-				// currentBet += 10;
 				betChips.push(10);
 				break;
 			}
 			else if(selectedChip[i].className=='activeChip twentyFiveChip ui-draggable ui-draggable-handle ui-draggable-dragging'){
-				// console.log('25')
-				// currentBet += 25;
 				betChips.push(25);
 				break;
 			}
 			else if(selectedChip[i].className=='activeChip hundredChip ui-draggable ui-draggable-handle ui-draggable-dragging'){
-				// console.log('100')
-				// currentBet += 100;
 				betChips.push(100);
 				break;
 			}
 		}
 	}
-	// console.log(currentBet)
-	// console.log(betChips)
 	if(betChips == []){
 		currentBet = 0;
-		// console.log("betChips is empty")
 	}else if(betChips !== []){
-		// console.log("betChips has chips")
 		currentBet = betChips.reduce(betSum);
 	}	
-	// console.log(currentBet)
 	$('#bet-amount').html('$'+currentBet);
 }
 
 function betSum(runningTotal, number) {
     return runningTotal + number;
 }
-
 
 function checkWin(){
 	playerTotal = calculateTotal(playersHand,'player');
@@ -432,6 +373,7 @@ function checkWin(){
 	}
 	if(bankTotal <= 0){
 		$("#playerLose").modal("show");
+		// Out of money!
 	}
 	$('.reset-button').show();
 }
@@ -440,22 +382,17 @@ function checkBlackJack(){
 	playerTotal = calculateTotal(playersHand,'player');
 	dealerTotal = calculateTotal(dealersHand,'dealer');
 	if(playerTotal == 21){
-
 		checkWin();
-
 		$('#playerBlackJack').modal("show");
 		$('.reset-button').show();
 		$('.deal-button').attr('disabled', 'disabled');
 		$('.hit-button').attr('disabled', 'disabled');
 		$('.stand-button').attr('disabled', 'disabled');
 		$('.double-button').attr('disabled', 'disabled');
-
 	}
 }
 
-
 function reset(){
-	
 	// reset hands and deck...and the DOM
 	theDeck = createDeck();
 	playersHand = [];
@@ -525,9 +462,6 @@ function reset(){
 						'<div id="hundredChips">'+
 							'<img src="hundredChips.png">'+
 						'</div>');
-
-	
-	// console.log(freshDeck);
 	$('.dealt1').removeClass('dealt1');
 	$('.dealt2').removeClass('dealt2');
 	$('.dDealt1').removeClass('dDealt1');
@@ -536,11 +470,8 @@ function reset(){
 	$('.split-amount').hide();
 	$('.insurance-amount').hide();
 	$('.insurance-button').hide();
-
-	// console.log(theDeck);
 	playerTotal = calculateTotal(playersHand,'player');
 	dealerTotal = calculateTotal(dealersHand,'dealer');
-	// $('.deal-button').removeAttr('disabled', 'disabled');
 	buildDivs();
 	$('.activeChip').draggable({
 		containment: '#the-table',
@@ -548,20 +479,16 @@ function reset(){
 		cursorAt: { top: 18, left: 29 },
 		helper: "clone",
 		revert: true
-
 	});
-
 	$('#dropArea').droppable({
 		tolerance: 'touch',
 		drop: droppedChip
 	});
-
 }
 
 function createDeck(){
 	var newDeck = [];
 	var suits = ['h','s','d','c'];
-	// suits.map(()=>{}).map()
 	for(let s = 0; s < suits.length; s++){
 		for(let c = 1; c <= 13; c++){
 			newDeck.push(c+suits[s]);
@@ -578,7 +505,6 @@ function shuffleDeck(){
 		theDeck[random1] = theDeck[random2];
 		theDeck[random2] = temp;
 	}
-	// console.log(theDeck);
 }
 
 function placeCard(who, where, whatCard){
@@ -589,7 +515,6 @@ function placeCard(who, where, whatCard){
 	$(classSelector).html('<img src="images/' + whatCard + '.png">');
 	if(classSelector == '.dealer-cards .card-2 .card-container .card-front'){
 		$(classSelector).html('<img src="images/deck.png">');
-		
 		$('.deal-button').attr('disabled', 'disabled');
 	}
 	$(classSelector2).toggleClass('flip');
@@ -611,7 +536,6 @@ function calculateTotal(hand, who){
 			cardValue = 11;
 		}
 		total += cardValue;
-
 		if((total > 21)&&(hasAce)){
             total -= 10;
             hasAce = false;
@@ -621,7 +545,6 @@ function calculateTotal(hand, who){
 	$(classSelector).text(total);
 	return total;
 }
-
 
 function buildDivs(){
 	for(let i = 1; i <= handSize; i++){
@@ -636,8 +559,6 @@ function buildDivs(){
 	$('.player-cards').html(setHTML);
 	$('.split-cards').html(setHTML);
 }
-
-
 
 $('#myModal').on('show.bs.modal', function (e) {
   if (!data) return e.preventDefault() // stops modal from being shown
