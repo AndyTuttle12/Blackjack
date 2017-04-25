@@ -290,12 +290,22 @@ function checkWin(){
 
 ## Screen Shots
 
-(More coming soon.)
+Here are some of the states that the game can take:
+
+![Start](https://github.com/AndyTuttle12/Blackjack/blob/master/screenshots/start-shot.png)
+![Deal](https://github.com/AndyTuttle12/Blackjack/blob/master/screenshots/deal-shot.png)
+![Insurance](https://github.com/AndyTuttle12/Blackjack/blob/master/screenshots/insurance-shot.png)
+![Insurance Win](https://github.com/AndyTuttle12/Blackjack/blob/master/screenshots/insurance-win-shot.png)
+![Split Bet](https://github.com/AndyTuttle12/Blackjack/blob/master/screenshots/split-bet-shot.png)
+![Split Hit](https://github.com/AndyTuttle12/Blackjack/blob/master/screenshots/split-hit-shot.png)
+![Tie End](https://github.com/AndyTuttle12/Blackjack/blob/master/screenshots/tie-shot.png)
 
 ---
 
 ## Live Demo
 
-(More coming soon.)
+Try it out and win big!
+
+[Demo](http://andytuttle.io/blackjack/)
 
 ---
